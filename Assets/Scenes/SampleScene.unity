@@ -373,6 +373,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodOrderPro: {fileID: 278120307}
   followNpc: {fileID: 178287550}
+  foodOrderTurnOff: {fileID: 315342823}
   food: 1
 --- !u!1 &278120305
 GameObject:
@@ -1366,6 +1367,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodOrderPro: {fileID: 1749001178}
   followNpc: {fileID: 1617588039}
+  foodOrderTurnOff: {fileID: 0}
   food: 1
 --- !u!1 &1142368821
 GameObject:
@@ -1665,7 +1667,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npcCtrl: {fileID: 1608172589}
-  foodOrder: {fileID: 0}
   loopCount: 1
   foodData: {fileID: 0}
   foodOrders: []

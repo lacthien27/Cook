@@ -10,6 +10,9 @@ public class FoodOrderCtrl : ThienMonoBehaviour
     [SerializeField] protected FollowNpc followNpc;
     public FollowNpc FollowNpc => followNpc;
 
+        [SerializeField] protected FoodOrderTurnOff foodOrderTurnOff;
+    public FoodOrderTurnOff FoodOrderTurnOff => foodOrderTurnOff;
+
 
     public int food = 1;
     protected override void LoadComponents()
@@ -17,6 +20,14 @@ public class FoodOrderCtrl : ThienMonoBehaviour
         base.LoadComponents();
         this.LoadFoodProperties();
         this.LoadFollowNpc();
+        this.LoadFoodCookTurnOff();
+    }
+
+    protected virtual void LoadFoodCookTurnOff()
+    {
+        if (this.foodOrderTurnOff != null) return;
+        this.foodOrderTurnOff = GetComponentInChildren<FoodOrderTurnOff>();
+        Debug.LogWarning(transform.name + " : Load FoodOrderTurnOff", gameObject);
     }
 
 

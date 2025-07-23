@@ -112,7 +112,7 @@ public class StateMachineCtrl : NpcAbs
         }
         currentState = newState;
         currentState.OnStateEnter(this);
-        Debug.LogWarning(currentState);
+//        Debug.LogWarning(currentState);
                       
 
        

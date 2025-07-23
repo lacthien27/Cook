@@ -7,23 +7,22 @@ using System;
 
 public class NpcReceiveFood : NpcAbs
 {
-
-  // [SerializeField] public bool isCorrectOrder=false; // for FoodOrderTurnOff use check
-
-    public virtual void CompareFood(FoodCookImpact FoodCookImpact)
-    {
-        var FoodOrderData = this.NpcCtrl.NpcOrder.foodData; // FoodOrder
-        
-        var foodCookpro = FoodCookImpact.FoodCookCtrl.FoodCookPro;
-
-    if (foodCookpro.FoodData == FoodOrderData)
-    {
+  public virtual void CompareFood(FoodCookImpact FoodCookImpact)
+  {
+    var foodCookpro = FoodCookImpact.FoodCookCtrl.FoodCookPro;
+   // if (!this.NpcCtrl.NpcOrder.foodOrders.Contains(foodCookpro.FoodData)) return;//checkfoodCookpro.FoodData belong list of food orders ,nếu ko có thì return
+    //  FoodCookImpact.foodAsOrderd = true;  //condition to turn off FoodCookTurnOff
+    if (!this.npcCtrl.NpcOrder.foodDataToObjects.ContainsKey(foodCookpro.FoodData)) return;//check foodCookpro.FoodData belong to foodDataToObjects, nếu ko có thì return
       FoodCookImpact.foodAsOrderd = true;
-      
-      //  this.isCorrectOrder = true;                                      //OnReceivedFood?.Invoke(); // Notify that food has been received correctly
-    }
-    }
-
-
+      List<Transform> list= this.npcCtrl.NpcOrder.foodDataToObjects[foodCookpro.FoodData];
+      foreach (Transform foodTransform in list)
+        {
+        if (foodTransform.transform.name != foodCookpro.transform.parent.name) return;
+        var foodOrderTurnOff = foodTransform.GetComponentInChildren<FoodOrderTurnOff>();
+        foodOrderTurnOff.isCorrectOrder = true;
+        return;
+        }
+ 
+  }
    
 }

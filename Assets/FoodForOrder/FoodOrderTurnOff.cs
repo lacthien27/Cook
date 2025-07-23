@@ -5,29 +5,23 @@ using UnityEngine;
 
 public class FoodOrderTurnOff : FoodOrderAbs
 {
-    protected virtual void Update()
+    [SerializeField] public bool isCorrectOrder=false; // for NpcReceiveFood use check
+
+     protected void Update()
     {
-       // this.TurnOff();
+        this.TurnOff();
     }
-  
 
     public virtual void TurnOff()
-    
+
     {
-        var npcCtrl = this.FoodOrderCtrl.FollowNpc.Npctarget.GetComponent<NpcCtrl>();
-        var NpcReceiveFood= npcCtrl.NpcReceiveFood;
-    
-        if (/**NpcReceiveFood.isCorrectOrder && **/ GameCtrl.Instance.MouseCtrl.MousePos.isDrag == false)
+        if (GameCtrl.Instance.MouseCtrl.MousePos.isDrag == false && isCorrectOrder == true)
         {
             Debug.LogWarning("f");
-
             GameCtrl.Instance.SpawnerFoodOrder.Despawn(transform.parent);
-           // NpcReceiveFood.isCorrectOrder = false; // Reset the order correctness flag
+
+            this.isCorrectOrder = false; // Reset the order correctness flag
         }
-      
-
-
-
 
     }
 }
