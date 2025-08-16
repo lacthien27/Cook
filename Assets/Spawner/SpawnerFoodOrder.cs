@@ -9,7 +9,7 @@ public class SpawnerFoodOrder : Spawner
 {
 
 
-   [SerializeField] public Transform food;
+//   [SerializeField] public Transform food;
    public static Action OnSpawnedFoodOrder;
 
 

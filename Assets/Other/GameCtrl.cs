@@ -25,6 +25,8 @@ public class GameCtrl : ThienMonoBehaviour
 
 [SerializeField] protected SpawnerFoodForCook spawnerFoodForCook;
   public SpawnerFoodForCook SpawnerFoodForCook => spawnerFoodForCook;
+[SerializeField ] protected SystemCombineFoodCtrl systemCombineFoodCtrl;
+  public SystemCombineFoodCtrl SystemCombineFoodCtrl => systemCombineFoodCtrl;
 
 
 
@@ -44,9 +46,20 @@ public class GameCtrl : ThienMonoBehaviour
     this.LoadKitChenCabinet();
     this.LoadMouseCtrl();
     this.LoadSpawnerFoodForCook();
+    this.LoadSystemCombineFoodCtrl();
 
 
   }
+
+protected virtual void LoadSystemCombineFoodCtrl()
+  {
+
+    if (this.systemCombineFoodCtrl != null) return;
+    this.systemCombineFoodCtrl = GameCtrl.FindObjectOfType<SystemCombineFoodCtrl>();
+    Debug.Log(transform.name + "Load SystemCombineFoodCtrl", gameObject);
+
+  }
+
 
   protected virtual void LoadSpawnerFoodForCook()
   {

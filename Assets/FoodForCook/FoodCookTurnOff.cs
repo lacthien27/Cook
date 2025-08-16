@@ -13,7 +13,7 @@ public class FoodCookTurnOff : FoodCookAbs
 
     protected virtual void TurnOff()
     {
-        if (GameCtrl.Instance.MouseCtrl.MousePos.isDrag == false && FoodCookCtrl.FoodCookImpact.foodAsOrderd == true)
+        if (/**GameCtrl.Instance.MouseCtrl.MousePos.isDrag == false && **/FoodCookCtrl.FoodCookImpact.foodAsOrderd == true)
         {
             GameCtrl.Instance.SpawnerFoodForCook.Despawn(transform.parent);
         }

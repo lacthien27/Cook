@@ -9,7 +9,8 @@ public class SpawnerFoodForCook : Spawner
     protected override void Start()
     {
         this.SpawnFoodCook();
-      //  StartCoroutine(SpawnFoodCookLoop());
+        // StartCoroutine(SpawnFoodCookLoop());
+       InvokeRepeating(nameof(SpawnFoodCook), 5f, 5f);
 
     }
 
@@ -19,13 +20,6 @@ public class SpawnerFoodForCook : Spawner
         foodForCook.gameObject.SetActive(true);
     }
     
-    private IEnumerator SpawnFoodCookLoop()
-{
-    while (true)
-    {
-        SpawnFoodCook();
-        yield return new WaitForSeconds(5f);
-    }
-}
+
     
 }

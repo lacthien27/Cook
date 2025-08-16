@@ -13,10 +13,5 @@ MonoBehaviour:
   m_Name: Rice
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 23abe81ce073db646a857a82652f6835, type: 3}
-  timeCook: 0
-  money: 0
-  combineRecipes:
-  - ingredients:
-    - {fileID: 11400000}
-    - {fileID: 11400000, guid: 9597ed8101ba2e548a895ee9ef3ca405, type: 2}
-    resultFood: {fileID: 11400000, guid: 06ca64ae2d13f924f8844b2fc870d8d9, type: 2}
+  timeCook: 2
+  money: 2

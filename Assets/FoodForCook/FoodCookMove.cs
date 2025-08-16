@@ -7,7 +7,11 @@ using UnityEngine.Video;
 public class FoodCookMove : FoodCookAbs
 {
 
+   public Vector2 cellSize = new Vector2(0f, 0f);
+
    public Vector3 startPos;
+
+   public bool isCombinedArea = false;
 
    protected override void OnEnable()
    {
@@ -28,19 +32,21 @@ public class FoodCookMove : FoodCookAbs
       //codition to check if the mouse is dragging and the currentObject is this foodCookCtrl's FoodCookImpact
       if (GameCtrl.Instance.MouseCtrl.MousePos.isDrag && MouseImpact.currentObject == this.foodCookCtrl.FoodCookImpact)
       {
-
-         Vector3 mouseWorldPos = GameCtrl.Instance.MouseCtrl.transform.position;
-         this.transform.parent.position = mouseWorldPos;
+          Vector3 mouseWorldPos = GameCtrl.Instance.MouseCtrl.transform.position;
+      this.foodCookCtrl.FoodCookImpact.Rb2D.MovePosition(mouseWorldPos);
+        
       }
 
    }
    
    protected virtual void ReturnToStartPos()
    {
+      if(this.isCombinedArea) return;
+
       //condition to check if the mouse is not dragging and the currentObject is this foodCookCtrl's FoodCookImpact
       if (!GameCtrl.Instance.MouseCtrl.MousePos.isDrag && MouseImpact.currentObject == this.foodCookCtrl.FoodCookImpact)
       {
-         this.transform.parent.position = this.startPos; //Vector3.Lerp(this.transform.parent.position, this.startPos, 0.1f);
+         this.foodCookCtrl.FoodCookImpact.Rb2D.MovePosition(this.startPos);
       }
    }
 

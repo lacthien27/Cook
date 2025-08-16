@@ -21,10 +21,10 @@ public class StateOrder : StateAbs
         if (timer < 1f) return;
 
         timer = 0;
-        Debug.LogWarning("StateOrder: ExecuteLogic", gameObject);
-        this.stateMachineCtrl.ChangeState(this.stateMachineCtrl.StateWait);
+      //  Debug.LogWarning("StateOrder: ExecuteLogic", gameObject);
+     //  this.stateMachineCtrl.ChangeState(this.stateMachineCtrl.StateWait);
 
-        OnComplete_Order?.Invoke();  
+       // OnComplete_Order?.Invoke();  
     }
 
 

@@ -9,7 +9,6 @@ using System;
 public class NpcImpact : NpcAbs
 {
 
-
   protected virtual void OnTriggerEnter2D(Collider2D other)
   {
 
@@ -21,17 +20,17 @@ public class NpcImpact : NpcAbs
     }
 
   }
-  
+
 
   protected virtual void OnTriggerExit2D(Collider2D other)
   {
     if (other.GetComponent<FoodCookImpact>() != null)
     {
       var foodImpact = other.GetComponent<FoodCookImpact>();
-      foodImpact.foodAsOrderd = false; // Reset the order correctness flag when exiting the trigger
-                                       //  NpcCtrl.NpcReceiveFood.isCorrectOrder = false;
-
+      foodImpact.foodAsOrderd = false; // Reset the order correctness flag when exiting the trigger  
     }
+    
+
   }
 
 

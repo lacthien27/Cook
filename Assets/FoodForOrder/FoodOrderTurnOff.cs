@@ -9,15 +9,15 @@ public class FoodOrderTurnOff : FoodOrderAbs
 
      protected void Update()
     {
+        
         this.TurnOff();
     }
 
     public virtual void TurnOff()
 
     {
-        if (GameCtrl.Instance.MouseCtrl.MousePos.isDrag == false && isCorrectOrder == true)
+        if (GameCtrl.Instance.MouseCtrl.MousePos.isDrag == false && isCorrectOrder == true )
         {
-            Debug.LogWarning("f");
             GameCtrl.Instance.SpawnerFoodOrder.Despawn(transform.parent);
 
             this.isCorrectOrder = false; // Reset the order correctness flag
