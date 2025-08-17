@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class SystemCombineFoodImpact : SystemCombineFoodAbs
 {
-   [SerializeField] public List<Transform> listFood = new List<Transform>(); // Dùng List thay vì mảng
+    // [SerializeField] public List<Transform> listFood = new List<Transform>(); // Dùng List thay vì mảng
+
+    private HashSet<Transform> candidates = new HashSet<Transform>();
+
 
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (other.transform.name == "Impact")
         {
+            var obj = other.transform.parent;
             var cookmove = other.transform.parent.GetComponentInChildren<FoodCookMove>();
-            if (GameCtrl.Instance.MouseCtrl.MousePos.isDrag) return;
-            listFood.Add(other.transform.parent);
+            cookmove.isCombinedArea = true;
+            this.candidates.Add(obj);
+
 
 
         }
@@ -25,13 +30,14 @@ public class SystemCombineFoodImpact : SystemCombineFoodAbs
     {
         if (other.transform.name == "Impact")
         {
-            var cookmove = other.transform.parent.GetComponentInChildren<FoodCookMove>();
-            cookmove.isCombinedArea = true;
-            if (GameCtrl.Instance.MouseCtrl.MousePos.isDrag) return;
-            // Snap to nearest slot when dragging
-            this.SystemCombineFoodCtrl.SystemArrange.SnapToNearestSlot(other.transform);
-           // listFood.Add(other.transform.parent);
+            var obj = other.transform.parent;
+            if (!GameCtrl.Instance.MouseCtrl.MousePos.isDrag
+               && candidates.Contains(obj))
+            {
+                this.SystemCombineFoodCtrl.SystemArrange.AddObject(other.transform.parent);
+                                candidates.Remove(obj);
 
+            }
 
         }
 
@@ -42,8 +48,12 @@ public class SystemCombineFoodImpact : SystemCombineFoodAbs
     {
         if (other.transform.name == "Impact")
         {
+                        var obj = other.transform.parent;
             var cookmove = other.transform.parent.GetComponentInChildren<FoodCookMove>();
-           cookmove.isCombinedArea = false;
+            cookmove.isCombinedArea = false;
+           this.SystemCombineFoodCtrl.SystemArrange.RemoveObject(other.transform.parent);
+                       candidates.Remove(obj);
+
         }
     }
 }
