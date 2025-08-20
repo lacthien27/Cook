@@ -7,11 +7,14 @@ public class SystemArrange : SystemCombineFoodAbs
 {
     public List<Transform> arrangedObjects = new List<Transform>();
 
-    public Vector2 startPos = new Vector2(-1.5f, 0f);// phỉa là vị trí của transform.parrent
+    public bool isSnapped = false;
     public float offsetX = 1.0f;
 
 
-    protected bool isOneSignal = false;
+    public void FixedUpdate()
+    {
+       // this.DragMoveFood();
+    }
 
     // Hàm thêm object vào hàng
     public void AddObject(Transform obj)
@@ -19,8 +22,9 @@ public class SystemArrange : SystemCombineFoodAbs
         if (arrangedObjects.Contains(obj)) return;
         arrangedObjects.Add(obj);
         UpdatePositions();
-        //this.isOneSignal = false; // Reset the signal after adding an object
-        
+        this.isSnapped = true;
+
+
     }
 
     // Hàm xóa object ra khỏi hàng
@@ -30,28 +34,35 @@ public class SystemArrange : SystemCombineFoodAbs
         {
             arrangedObjects.Remove(obj);
             UpdatePositions();
+
         }
     }
 
     // Sắp xếp lại vị trí toàn bộ object dựa theo index
-    private void UpdatePositions()
+    public void UpdatePositions()
     {
         for (int i = 0; i < arrangedObjects.Count; i++)
         {
-            Vector2 targetPos = startPos + new Vector2(i * offsetX, 0);
+            Vector2 targetPos = transform.parent.position + new Vector3(-1.5f + i * offsetX, 0, 0);
             arrangedObjects[i].position = targetPos;
         }
     }
 
 
-    public void OnlyHandleWhenOnceImpact(Transform obj)
+ /**
+    public void DragMoveFood()
     {
-        if (GameCtrl.Instance.MouseCtrl.MousePos.isDrag) return;
-        if (isOneSignal) return;
-        isOneSignal = true;
-        AddObject(obj);
-        Debug.Log("Added object: " + obj.transform.name);
-        Debug.LogWarning(arrangedObjects.Count);
+        if (!GameCtrl.Instance.MouseCtrl.MousePos.isDrag) return; // Kiểm tra xem có đang kéo không
+        if (!this.isSnapped) return;
+        Debug.Log("Dragging food");
+        this.RemoveObject(this.transform);
+        this.isSnapped = false;
     }
+    
+**/
+    
+
+    
+    
 
 }

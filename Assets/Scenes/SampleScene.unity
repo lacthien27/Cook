@@ -2646,10 +2646,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   systemCombineFoodCtrl: {fileID: 925848791}
-  slotPoints: []
-  rows: 4
-  cellSize: 1
-  startPos: {x: -1.5, y: 0}
+  arrangedObjects: []
+  offsetX: 1
 --- !u!1 &1749001176
 GameObject:
   m_ObjectHideFlags: 0

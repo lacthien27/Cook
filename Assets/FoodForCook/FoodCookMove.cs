@@ -33,7 +33,6 @@ public class FoodCookMove : FoodCookAbs
       if (GameCtrl.Instance.MouseCtrl.MousePos.isDrag && MouseImpact.currentObject == this.foodCookCtrl.FoodCookImpact)
       {
          Vector3 mouseWorldPos = GameCtrl.Instance.MouseCtrl.transform.position;
-       //  this.foodCookCtrl.FoodCookImpact.Rb2D.MovePosition(mouseWorldPos);
 
                this.transform.parent.position = mouseWorldPos;
 
@@ -49,7 +48,6 @@ public class FoodCookMove : FoodCookAbs
       //condition to check if the mouse is not dragging and the currentObject is this foodCookCtrl's FoodCookImpact
       if (!GameCtrl.Instance.MouseCtrl.MousePos.isDrag && MouseImpact.currentObject == this.foodCookCtrl.FoodCookImpact)
       {
-        // this.foodCookCtrl.FoodCookImpact.Rb2D.MovePosition(this.startPos);
            this.transform.parent.position = this.startPos;
       }
    }

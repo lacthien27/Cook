@@ -10,7 +10,7 @@ public class SpawnerFoodForCook : Spawner
     {
         this.SpawnFoodCook();
         // StartCoroutine(SpawnFoodCookLoop());
-       InvokeRepeating(nameof(SpawnFoodCook), 5f, 5f);
+       InvokeRepeating(nameof(SpawnFoodCook), 5f, 70f);
 
     }
 
