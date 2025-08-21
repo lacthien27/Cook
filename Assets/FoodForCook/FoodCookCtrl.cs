@@ -11,12 +11,35 @@ public class FoodCookCtrl : ThienMonoBehaviour
     public FoodCookImpact FoodCookImpact => foodCookImpact;
 
 
+    [SerializeField] protected FoodCookPickup foodCookPickup;
+    public FoodCookPickup FoodCookPickup => foodCookPickup;
+
+
+    [SerializeField] protected FoodCookMove foodCookMove;
+    public FoodCookMove FoodCookMove => foodCookMove;
+
     public int food = 1;
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadFoodProperties();
         this.LoadFoodCookImpact();
+        this.LoadFoodCookMove();
+        this.LoadFoodCookPickup();
+    }
+
+    protected virtual void LoadFoodCookMove()
+    {
+        if (this.foodCookMove != null) return;
+        this.foodCookMove = GetComponentInChildren<FoodCookMove>();
+        Debug.LogWarning(transform.name + " : Load FoodCookMove", gameObject);
+    }
+
+    protected virtual void LoadFoodCookPickup()
+    {
+        if (this.foodCookPickup != null) return;
+        this.foodCookPickup = GetComponentInChildren<FoodCookPickup>();
+        Debug.LogWarning(transform.name + " : Load FoodCookPickUp", gameObject);
     }
 
 

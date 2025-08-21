@@ -422,6 +422,52 @@ MonoBehaviour:
   followNpc: {fileID: 178287550}
   foodOrderTurnOff: {fileID: 315342823}
   food: 1
+--- !u!1 &262083824
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 262083825}
+  - component: {fileID: 262083826}
+  m_Layer: 0
+  m_Name: 'Pickup '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &262083825
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262083824}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1687303302}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &262083826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262083824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90bf261bd5353f54eb342c346f948c56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodCookCtrl: {fileID: 1687303303}
+  isCombinedArea: 0
 --- !u!1 &278120305
 GameObject:
   m_ObjectHideFlags: 0
@@ -1218,7 +1264,7 @@ MonoBehaviour:
   kitChenCabinet: {fileID: 1131373382}
   mouseCtrl: {fileID: 951228022}
   spawnerFoodForCook: {fileID: 1637022556}
-  systemCombineFoodCtrl: {fileID: 0}
+  systemCombineFoodCtrl: {fileID: 925848791}
 --- !u!4 &708233947
 Transform:
   m_ObjectHideFlags: 0
@@ -1317,7 +1363,6 @@ GameObject:
   - component: {fileID: 847424910}
   - component: {fileID: 847424914}
   - component: {fileID: 847424912}
-  - component: {fileID: 847424915}
   m_Layer: 0
   m_Name: MouseImpact
   m_TagString: Untagged
@@ -1334,7 +1379,7 @@ Transform:
   m_GameObject: {fileID: 847424909}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 951228023}
@@ -1379,27 +1424,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseCtrl: {fileID: 951228022}
---- !u!50 &847424915
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 847424909}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &850577231
 GameObject:
   m_ObjectHideFlags: 0
@@ -1536,7 +1560,7 @@ Transform:
   m_GameObject: {fileID: 951228021}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 155982244}
@@ -1659,6 +1683,7 @@ Transform:
   - {fileID: 1184067758}
   - {fileID: 640793843}
   - {fileID: 1626555095}
+  - {fileID: 1249525227}
   m_Father: {fileID: 225569920}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1676,6 +1701,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodCookPro: {fileID: 640793844}
   foodCookImpact: {fileID: 358510558}
+  foodCookPickup: {fileID: 1249525228}
+  foodCookMove: {fileID: 1184067759}
   food: 1
 --- !u!1 &1085197226
 GameObject:
@@ -1818,8 +1845,53 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodCookCtrl: {fileID: 1050908587}
-  cellSize: {x: 0, y: 0}
   startPos: {x: 0, y: 0, z: 0}
+  isCombinedArea: 0
+--- !u!1 &1249525226
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1249525227}
+  - component: {fileID: 1249525228}
+  m_Layer: 0
+  m_Name: Pickup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1249525227
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249525226}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1050908586}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1249525228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249525226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90bf261bd5353f54eb342c346f948c56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodCookCtrl: {fileID: 1050908587}
   isCombinedArea: 0
 --- !u!1 &1250616754
 GameObject:
@@ -2516,7 +2588,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodCookCtrl: {fileID: 1687303303}
-  cellSize: {x: 0, y: 0}
   startPos: {x: 0, y: 0, z: 0}
   isCombinedArea: 0
 --- !u!1 &1687303301
@@ -2552,6 +2623,7 @@ Transform:
   - {fileID: 1686904447}
   - {fileID: 183080196}
   - {fileID: 1641822275}
+  - {fileID: 262083825}
   m_Father: {fileID: 225569920}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2569,6 +2641,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodCookPro: {fileID: 183080195}
   foodCookImpact: {fileID: 318280130}
+  foodCookPickup: {fileID: 262083826}
+  foodCookMove: {fileID: 1686904448}
   food: 1
 --- !u!1 &1695185296
 GameObject:
@@ -2647,6 +2721,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   systemCombineFoodCtrl: {fileID: 925848791}
   arrangedObjects: []
+  isSnapped: 0
   offsetX: 1
 --- !u!1 &1749001176
 GameObject:
