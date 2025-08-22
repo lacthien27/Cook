@@ -2,45 +2,50 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FoodCookPickup : FoodCookAbs,IsPickupAble
+public class FoodCookPickup : FoodCookAbs, IsPickupAble
 {
+    
+         public  bool isAreaImpact { get; set; }
 
-     public  bool isPickup { get; set; }
+        public bool isPickUp{ get; set; }  //  picked up  will do not allow to move object otherwise
+        
+         protected override void OnEnable()
+    {
+        isPickUp= false;
+    }
 
-       public bool isCombinedArea = false;
-
-    protected virtual void Update()
+        protected virtual void Update()
     {
 
         this.OnDrag();
         this.OnDrop();
 
     }
-    public void OnPickup()
-    {
+        public void OnPickup()
+        {
 
-    }
+        }
 
     public void OnDrag()
     {
-        if (MouseImpact.currentObject != null) return;
-            if (isPickup == true && GameCtrl.Instance.MouseCtrl.MousePos.isDrag)
-            {
-                this.foodCookCtrl.FoodCookMove.Move();
-                Debug.LogWarning("g");
-            }
-        
-        
+        if (isPickUp == true) return;
+                if (isAreaImpact == true && GameCtrl.Instance.MouseCtrl.MousePos.isDrag)
+                {
+                    this.foodCookCtrl.FoodCookMove.Move();
+                }
     }
 
     public void OnDrop()
     {
 
-      if (isPickup == true && !GameCtrl.Instance.MouseCtrl.MousePos.isDrag)
+        if (isAreaImpact == true && !GameCtrl.Instance.MouseCtrl.MousePos.isDrag)
         {
-
+            isPickUp = false;
             this.foodCookCtrl.FoodCookMove.ReturnToStartPos();
-        }
-    }
 
+        }
+        
+
+    }
+   
 }

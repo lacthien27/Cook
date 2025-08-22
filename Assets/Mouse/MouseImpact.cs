@@ -9,8 +9,6 @@ public class MouseImpact : MouseAbs
    [SerializeField] public static FoodCookImpact currentObject;
    
 
-
-
    private void OnTriggerEnter2D(Collider2D other)
    {
       if (other.transform.parent.GetComponent<FoodCookCtrl>())
@@ -18,7 +16,7 @@ public class MouseImpact : MouseAbs
          var objCtrl = other.transform.parent.GetComponent<FoodCookCtrl>();
          if (objCtrl.FoodCookPickup.TryGetComponent(out IsPickupAble ObjPickup))
          {
-            ObjPickup.isPickup = true;
+            ObjPickup.isAreaImpact = true;
 
          }
       }
@@ -31,7 +29,7 @@ public class MouseImpact : MouseAbs
            var objCtrl = other.transform.parent.GetComponent<FoodCookCtrl>();
            if (objCtrl.FoodCookPickup.TryGetComponent(out IsPickupAble ObjPickup))
            {
-              ObjPickup.isPickup = false;
+              ObjPickup.isAreaImpact = false;
            }
         }
       

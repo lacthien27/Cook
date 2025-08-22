@@ -24,26 +24,34 @@ public class FoodCookImpact : FoodCookAbs
         this.LoadRigidbody2D();
     }
 
-    
-       protected virtual void OnTriggerEnter2D(Collider2D other)
+
+    protected virtual void OnTriggerEnter2D(Collider2D other)
     {
 
-        if (MouseImpact.currentObject != null) return;
-        var mouse = other.gameObject.transform.GetComponent<MouseImpact>(); // if there is already a currentObject, do not set this one
-        if (mouse != null)
-        {
-            MouseImpact.currentObject = this; // set currentObject to FoodCookImpact when mouse enters the impact zone
-        }
+        if (other.transform.parent.GetComponent<FoodCookCtrl>())
+      {
+         var objCtrl = other.transform.parent.GetComponent<FoodCookCtrl>();
+            if (objCtrl.FoodCookPickup.TryGetComponent(out IsPickupAble ObjPickup))
+            {
+                if (ObjPickup.isAreaImpact == true) return;  // if the object is already in the area impact, thì cứ cho nó di chuyển
+                    ObjPickup.isPickUp = true;              //if object is not in the area impact, will not allow to  move 
+
+                
+
+            }
+      }
     }
 
     protected virtual void OnTriggerExit2D(Collider2D other)
     {
-        var mouse = other.gameObject.transform.GetComponent<MouseImpact>(); // if there is already a currentObject, do not set this one
-        if (mouse != null && MouseImpact.currentObject == this)// help reset the currentObject when mouse exits the impact zone
+        if (other.transform.parent.GetComponent<FoodCookCtrl>())
+      {
+         var objCtrl = other.transform.parent.GetComponent<FoodCookCtrl>();
+         if (objCtrl.FoodCookPickup.TryGetComponent(out IsPickupAble ObjPickup))
+         {
 
-            MouseImpact.currentObject = null;
-
-        
+         }
+      }
     }
 
 
@@ -62,5 +70,7 @@ public class FoodCookImpact : FoodCookAbs
         Debug.LogWarning(transform.name + " : Load Collider2D", gameObject);
     }
 
+
+   
 
 }
