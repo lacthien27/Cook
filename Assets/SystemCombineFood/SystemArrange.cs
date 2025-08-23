@@ -5,24 +5,19 @@ using UnityEngine;
 
 public class SystemArrange : SystemCombineFoodAbs
 {
-    public List<Transform> arrangedObjects = new List<Transform>();
+    public List<Transform> arrangedObjects = new List<Transform>(); //foodForCookCtrl
 
     public bool isSnapped = false;
     public float offsetX = 1.0f;
 
-
-    public void FixedUpdate()
-    {
-       // this.DragMoveFood();
-    }
-
     // Hàm thêm object vào hàng
-    public void AddObject(Transform obj)
+    public void AddObject(Transform obj)  
     {
         if (arrangedObjects.Contains(obj)) return;
         arrangedObjects.Add(obj);
         UpdatePositions();
         this.isSnapped = true;
+             this.systemCombineFoodCtrl.SystemCombineFood.GetListFoodData();
 
 
     }
@@ -45,22 +40,11 @@ public class SystemArrange : SystemCombineFoodAbs
         {
             Vector2 targetPos = transform.parent.position + new Vector3(-1.5f + i * offsetX, 0, 0);
             arrangedObjects[i].position = targetPos;
+                
         }
     }
 
-
- /**
-    public void DragMoveFood()
-    {
-        if (!GameCtrl.Instance.MouseCtrl.MousePos.isDrag) return; // Kiểm tra xem có đang kéo không
-        if (!this.isSnapped) return;
-        Debug.Log("Dragging food");
-        this.RemoveObject(this.transform);
-        this.isSnapped = false;
-    }
-    
-**/
-    
+   
 
     
     

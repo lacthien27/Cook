@@ -10,22 +10,19 @@ public class FoodData : ScriptableObject
     public float timeCook;
 
     public int money;
-/**
-    [System.Serializable]  public struct CombineRecipe
-    {
-    public List<FoodData> ingredients;
+
+    public FoodType type; // đổi từ string -> enum
+
+}
+
+public enum FoodType
+{
+    Egg,
+    Rice,
+    Meat,
+    Vegetable,
     
-        public FoodData resultFood;
-    }
-    public List<CombineRecipe> combineRecipes;
-**/
-    
-  
-
- 
-
-
-
+    // thêm các loại khác tùy mày
 }
 
 

@@ -21,11 +21,7 @@ public class FoodCookPickup : FoodCookAbs, IsPickupAble
         this.OnDrop();
 
     }
-        public void OnPickup()
-        {
-
-        }
-
+ 
     public void OnDrag()
     {
         if (isPickUp == true) return;

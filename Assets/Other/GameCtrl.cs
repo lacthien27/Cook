@@ -16,6 +16,10 @@ public class GameCtrl : ThienMonoBehaviour
   public SpawnerNpc SpawnerNpc => spawnerNpc;
 
 
+  [SerializeField] protected SpawnerDish spawnerDish;
+  public SpawnerDish SpawnerDish => spawnerDish;
+
+
   [SerializeField] protected KitChenCabinet kitChenCabinet;
   public KitChenCabinet KitChenCabinet => kitChenCabinet;
 
@@ -47,11 +51,20 @@ public class GameCtrl : ThienMonoBehaviour
     this.LoadMouseCtrl();
     this.LoadSpawnerFoodForCook();
     this.LoadSystemCombineFoodCtrl();
+    this.LoadSpawnerDish();
 
 
   }
 
-protected virtual void LoadSystemCombineFoodCtrl()
+  protected virtual void LoadSpawnerDish()
+  {
+
+    if (this.spawnerDish != null) return;
+    this.spawnerDish = GameCtrl.FindObjectOfType<SpawnerDish>();
+    Debug.Log(transform.name + "Load SpawnerDish", gameObject);
+
+  }
+  protected virtual void LoadSystemCombineFoodCtrl()
   {
 
     if (this.systemCombineFoodCtrl != null) return;
