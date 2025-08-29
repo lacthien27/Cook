@@ -11,7 +11,13 @@ public class FoodData : ScriptableObject
 
     public int money;
 
-    public FoodType type; // đổi từ string -> enum
+    public FoodType type; 
+
+    public isStateFood stateFood; // dùng để làm điều kiện lấy trạng thái hay ko 
+
+
+
+    
 
 }
 
@@ -21,8 +27,19 @@ public enum FoodType
     Rice,
     Meat,
     Vegetable,
-    
+
+    Broken_Rice,
+
     // thêm các loại khác tùy mày
 }
+
+
+public enum isStateFood
+{
+    has,
+    no,
+
+}
+
 
 

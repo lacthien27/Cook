@@ -14,7 +14,7 @@ public class SpawnerFoodForCook : Spawner
 
     }
 
-    protected virtual void SpawnFoodCook()
+    public virtual void SpawnFoodCook()
     {
         var foodForCook = this.Spawn(this.RandomPrefab(), GameCtrl.Instance.KitChenCabinet.transform.position, Quaternion.identity);
         foodForCook.gameObject.SetActive(true);

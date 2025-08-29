@@ -13,12 +13,29 @@ public class SystemCombineFoodCtrl : GameAbs
     public SystemCombineFood SystemCombineFood => systemCombineFood;
 
 
+    [SerializeField] protected SystemCombineDirectory systemCombineDirectory;
+    public SystemCombineDirectory SystemCombineDirectory => systemCombineDirectory;
+
+
+    [SerializeField] protected SpawnerDish spawnerDish;
+    public SpawnerDish SpawnerDish => spawnerDish;
+
+
 
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadSystemArrange();
         this.LoadSystemCombineFood();
+        this.LoacSystemCombineDirectory();
+        this.LoadSpawnerDish();
+    }
+
+    protected virtual void LoacSystemCombineDirectory()
+    {
+        if (this.systemCombineDirectory != null) return;
+        this.systemCombineDirectory = GetComponentInChildren<SystemCombineDirectory>();
+        Debug.LogWarning(transform.name + " : Load SystemCombineDirectory", gameObject);
     }
 
 
@@ -35,4 +52,12 @@ public class SystemCombineFoodCtrl : GameAbs
         this.systemArrange = GetComponentInChildren<SystemArrange>();
         Debug.LogWarning(transform.name + " : Load SystemArrange", gameObject);
     }
+
+    protected virtual void LoadSpawnerDish()
+    {
+        if (this.spawnerDish != null) return;
+        this.spawnerDish = GetComponentInChildren<SpawnerDish>();
+        Debug.LogWarning(transform.name + " : Load SpawnerDish", gameObject);
+    }
+
 }

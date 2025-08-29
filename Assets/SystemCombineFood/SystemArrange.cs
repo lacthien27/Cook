@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SystemArrange : SystemCombineFoodAbs
 {
-    public List<Transform> arrangedObjects = new List<Transform>(); //foodForCookCtrl
+    public List<Transform> listDish = new List<Transform>(); //foodForCookCtrl
 
     public bool isSnapped = false;
     public float offsetX = 1.0f;
@@ -13,8 +13,8 @@ public class SystemArrange : SystemCombineFoodAbs
     // Hàm thêm object vào hàng
     public void AddObject(Transform obj)  
     {
-        if (arrangedObjects.Contains(obj)) return;
-        arrangedObjects.Add(obj);
+        if (listDish.Contains(obj)) return;
+        listDish.Add(obj);
         UpdatePositions();
         this.isSnapped = true;
              this.systemCombineFoodCtrl.SystemCombineFood.GetListFoodData();
@@ -25,10 +25,12 @@ public class SystemArrange : SystemCombineFoodAbs
     // Hàm xóa object ra khỏi hàng
     public void RemoveObject(Transform obj)
     {
-        if (arrangedObjects.Contains(obj))
+        if (listDish.Contains(obj))
         {
-            arrangedObjects.Remove(obj);
+            listDish.Remove(obj);
             UpdatePositions();
+            this.systemCombineFoodCtrl.SystemCombineFood.GetListFoodData();
+
 
         }
     }
@@ -36,10 +38,10 @@ public class SystemArrange : SystemCombineFoodAbs
     // Sắp xếp lại vị trí toàn bộ object dựa theo index
     public void UpdatePositions()
     {
-        for (int i = 0; i < arrangedObjects.Count; i++)
+        for (int i = 0; i < listDish.Count; i++)
         {
             Vector2 targetPos = transform.parent.position + new Vector3(-1.5f + i * offsetX, 0, 0);
-            arrangedObjects[i].position = targetPos;
+            listDish[i].position = targetPos;
                 
         }
     }

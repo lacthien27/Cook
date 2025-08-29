@@ -8,7 +8,7 @@ public class Spawner : ThienMonoBehaviour
     [SerializeField] public Transform holder;
 
 
-    [SerializeField] protected List<Transform> prefabs;
+    [SerializeField] public List<Transform> prefabs;
     [SerializeField] protected List<Transform> poolObjs;
 
 

@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcdf6915fc9b6e34f8f53efd170848c1, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c01688d7dbeadd4d9223fccf52f65a8, type: 3}
   m_Name: Broken_Rice
   m_EditorClassIdentifier: 
-  inputFoods:
-  - {fileID: 11400000, guid: 9597ed8101ba2e548a895ee9ef3ca405, type: 2}
-  - {fileID: 11400000, guid: 4aefb00eb82a9064cbe6bbd0bbf2047b, type: 2}
-  money: 2
-  outputPrefab: {fileID: 0}
+  icon: {fileID: 0}
+  timeCook: 0
+  money: 10
+  type: 4
+  stateFood: 1
