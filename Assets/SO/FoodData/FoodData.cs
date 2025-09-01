@@ -41,5 +41,14 @@ public enum isStateFood
 
 }
 
+public enum Separate
+{
+    Ingredient,
+    Dish,
+
+}
+
+
+
 
 

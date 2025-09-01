@@ -5,9 +5,9 @@ using UnityEngine;
 public class FoodCookPickup : FoodCookAbs, IsPickupAble
 {
     
-         public  bool isAreaImpact { get; set; }
+    [SerializeField]     public  bool isAreaImpact { get; set; }   // is in zone impact off  mouse
 
-        public bool isPickUp{ get; set; }  //  picked up  will do not allow to move object otherwise
+    [SerializeField]    public bool isPickUp{ get; set; }  //  picked up  will do not allow to move object otherwise
         
          protected override void OnEnable()
     {

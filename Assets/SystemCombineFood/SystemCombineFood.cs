@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using System.Linq; // nhớ thêm dòng này ở trên
+using System;
+
 
 
 public class SystemCombineFood : SystemCombineFoodAbs
@@ -10,9 +12,10 @@ public class SystemCombineFood : SystemCombineFoodAbs
     [SerializeField]   public List<RecipeSO> recipes;   // list of recipes for mixing
   [SerializeField]  public List<FoodData> currentFoods = new List<FoodData>();  // list of current foods for mixing
 
+      public static event Action OnEnoughFoodToDish;
 
 
-  public void GetListFoodData()
+  public void GetListFoodData() // get Data from Transform list in SystemArrange
     {
       currentFoods.Clear(); // Xóa list cũ trước khi build lại
       foreach (var obj in this.SystemCombineFoodCtrl.SystemArrange.listDish)
@@ -35,9 +38,10 @@ public class SystemCombineFood : SystemCombineFoodAbs
         if (MatchRecipe(recipe))
         {
         Transform DishData = this.SystemCombineFoodCtrl.SystemCombineDirectory.GetTransformformDirectory(recipe.ResultDish);
-        Debug.Log("Matched Recipe: " + recipe.name);
-       this.SystemCombineFoodCtrl.SpawnerDish.SpawnDish(DishData);
-        ClearInputs();  // delete input foods after successful recipe
+        GameCtrl.Instance.SpawnerFoodForCook.SpawnDish(DishData,transform.parent.position);
+        ClearIngredients();  // delete input foods after successful recipe
+        //this.OnlyGetObjBelongOWner(); // only set true for object belong to this SystemCombineFood
+          OnEnoughFoodToDish?.Invoke(); // gọi event (nếu có người lắng nghe)
           break;
         }
       }
@@ -65,14 +69,26 @@ public class SystemCombineFood : SystemCombineFoodAbs
 }
 
 
-    void ClearInputs()
-    {
-      // Xóa hết món input (destroy object ngoài scene)
-      // clear list
-      currentFoods.Clear();
+  void ClearIngredients()
+  {
+
+    currentFoods.Clear();  //list Data
+    this.SystemCombineFoodCtrl.SystemArrange.listDish.Clear(); //list Transform
+
+
     }
 
-  
-
+/**
+  protected virtual void OnlyGetObjBelongOWner()  //  chỉ lấy các object thuộc cùng 1 SystemCombineFood 
+  {
+    Debug.LogWarning(this.SystemCombineFoodCtrl.SystemArrange.listDish.Count);
+    foreach (var obj in this.SystemCombineFoodCtrl.SystemArrange.listDish) // dùng ToList() để tránh lỗi khi xóa phần tử trong vòng lặp
+    {
+      Debug.LogWarning("Setting");
+      var objCtrl = obj.GetComponent<FoodCookCtrl>();
+      objCtrl.FoodCookTurnOff.isInSysTemCombineFoodArea = true; // set true cho các object trong vùng va chạm
+      Debug.LogWarning(objCtrl.FoodCookTurnOff.isInSysTemCombineFoodArea);
+    }
+  } **/
 
 }

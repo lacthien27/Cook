@@ -1,24 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class FoodCookTurnOff : FoodCookAbs
+public class FoodCookTurnOff : FoodCookAbs   
 {
-
-
-    protected void Update()
+     public bool isInSysTemCombineFoodArea = false; // check if the food is in the combine area
+    protected override void OnEnable()
     {
-         this.TurnOff();
+        // Đăng ký event
+        SystemCombineFood.OnEnoughFoodToDish += TurnOff;
     }
 
-    protected virtual void TurnOff()
+   
+
+
+    public virtual void TurnOff()
     {
-        if (/**GameCtrl.Instance.MouseCtrl.MousePos.isDrag == false && **/FoodCookCtrl.FoodCookImpact.foodAsOrderd == true)
-        {
-            GameCtrl.Instance.SpawnerFoodForCook.Despawn(transform.parent);
-        }
-
-
+         if(this.FoodCookCtrl.FoodCookMove.isCombinedArea==false) return; // only turn off when  in combine area
+         // if (this.isInSysTemCombineFoodArea == false) return; // only turn off when  in combine area
+       
+        Debug.LogWarning("TurnOff called for " + this.name);
+        GameCtrl.Instance.SpawnerFoodForCook.Despawn(transform.parent);
+        //  this.isInSysTemCombineFoodArea= false; // reset trạng thái sau khi despawn
     }
 }
  
+

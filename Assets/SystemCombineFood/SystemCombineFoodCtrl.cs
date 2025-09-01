@@ -5,9 +5,7 @@ using UnityEngine;
 public class SystemCombineFoodCtrl : GameAbs
 {
 
-    [SerializeField] protected SystemArrange systemArrange;
-    public SystemArrange SystemArrange => systemArrange;
-
+  
 
     [SerializeField] protected SystemCombineFood systemCombineFood;
     public SystemCombineFood SystemCombineFood => systemCombineFood;
@@ -16,9 +14,9 @@ public class SystemCombineFoodCtrl : GameAbs
     [SerializeField] protected SystemCombineDirectory systemCombineDirectory;
     public SystemCombineDirectory SystemCombineDirectory => systemCombineDirectory;
 
+      [SerializeField] protected SystemArrange systemArrange;
+    public SystemArrange SystemArrange => systemArrange;
 
-    [SerializeField] protected SpawnerDish spawnerDish;
-    public SpawnerDish SpawnerDish => spawnerDish;
 
 
 
@@ -28,8 +26,11 @@ public class SystemCombineFoodCtrl : GameAbs
         this.LoadSystemArrange();
         this.LoadSystemCombineFood();
         this.LoacSystemCombineDirectory();
-        this.LoadSpawnerDish();
     }
+
+    
+
+   
 
     protected virtual void LoacSystemCombineDirectory()
     {
@@ -53,11 +54,5 @@ public class SystemCombineFoodCtrl : GameAbs
         Debug.LogWarning(transform.name + " : Load SystemArrange", gameObject);
     }
 
-    protected virtual void LoadSpawnerDish()
-    {
-        if (this.spawnerDish != null) return;
-        this.spawnerDish = GetComponentInChildren<SpawnerDish>();
-        Debug.LogWarning(transform.name + " : Load SpawnerDish", gameObject);
-    }
 
 }

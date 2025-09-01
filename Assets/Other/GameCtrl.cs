@@ -48,11 +48,14 @@ public class GameCtrl : ThienMonoBehaviour
     this.LoadMouseCtrl();
     this.LoadSpawnerFoodForCook();
     this.LoadSystemCombineFoodCtrl();
+    
 
 
   }
 
- 
+  
+
+
   protected virtual void LoadSystemCombineFoodCtrl()
   {
 

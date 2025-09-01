@@ -66,6 +66,7 @@ public class Spawner : ThienMonoBehaviour
         Transform newPrefab = this.GetObjectFromPool(prefab);
         newPrefab.SetLocalPositionAndRotation(spawnPos,spawnRot);
         newPrefab.parent = this.holder;
+       // newPrefab.gameObject.SetActive(true);
         return newPrefab;
 
     }

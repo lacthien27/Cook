@@ -9,7 +9,7 @@ public class FoodCookMove : FoodCookAbs
 
    public Vector3 startPos;
 
-   public bool isCombinedArea = false;
+   public bool isCombinedArea = false;  //đúng vị trí thì thoy ko quay về chỗ cũ, xem lại tên đặt tên cho đúng
 
    protected override void OnEnable()
    {

@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class FoodCookPro : FoodCookAbs
 {
-   [SerializeField] private FoodData foodData;
+    [SerializeField] private FoodData foodData;
     public FoodData FoodData => foodData;
+
+
+    [SerializeField]   public Separate type; 
+
 }
+
+
+
