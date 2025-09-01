@@ -12,17 +12,11 @@ public class FoodCookTurnOff : FoodCookAbs
         SystemCombineFood.OnEnoughFoodToDish += TurnOff;
     }
 
-   
-
-
     public virtual void TurnOff()
     {
-         if(this.FoodCookCtrl.FoodCookMove.isCombinedArea==false) return; // only turn off when  in combine area
-         // if (this.isInSysTemCombineFoodArea == false) return; // only turn off when  in combine area
-       
-        Debug.LogWarning("TurnOff called for " + this.name);
+         if (this.isInSysTemCombineFoodArea == false) return; // only turn off when  in combine area
         GameCtrl.Instance.SpawnerFoodForCook.Despawn(transform.parent);
-        //  this.isInSysTemCombineFoodArea= false; // reset trạng thái sau khi despawn
+        this.isInSysTemCombineFoodArea= false; // reset trạng thái sau khi despawn
     }
 }
  

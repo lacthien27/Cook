@@ -39,9 +39,10 @@ public class SystemCombineFood : SystemCombineFoodAbs
         {
         Transform DishData = this.SystemCombineFoodCtrl.SystemCombineDirectory.GetTransformformDirectory(recipe.ResultDish);
         GameCtrl.Instance.SpawnerFoodForCook.SpawnDish(DishData,transform.parent.position);
-        ClearIngredients();  // delete input foods after successful recipe
-        //this.OnlyGetObjBelongOWner(); // only set true for object belong to this SystemCombineFood
-          OnEnoughFoodToDish?.Invoke(); // gọi event (nếu có người lắng nghe)
+        this.OnlyGetObjBelongOWner(); // only set true for object belong to this SystemCombineFood
+        OnEnoughFoodToDish?.Invoke(); // gọi event (nếu có người lắng nghe)
+
+        ClearIngredients();  // leave it at last
           break;
         }
       }
@@ -78,17 +79,14 @@ public class SystemCombineFood : SystemCombineFoodAbs
 
     }
 
-/**
+
   protected virtual void OnlyGetObjBelongOWner()  //  chỉ lấy các object thuộc cùng 1 SystemCombineFood 
   {
-    Debug.LogWarning(this.SystemCombineFoodCtrl.SystemArrange.listDish.Count);
     foreach (var obj in this.SystemCombineFoodCtrl.SystemArrange.listDish) // dùng ToList() để tránh lỗi khi xóa phần tử trong vòng lặp
     {
-      Debug.LogWarning("Setting");
       var objCtrl = obj.GetComponent<FoodCookCtrl>();
       objCtrl.FoodCookTurnOff.isInSysTemCombineFoodArea = true; // set true cho các object trong vùng va chạm
-      Debug.LogWarning(objCtrl.FoodCookTurnOff.isInSysTemCombineFoodArea);
     }
-  } **/
+  } 
 
 }
