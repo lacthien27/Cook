@@ -53,6 +53,7 @@ public class SystemCombineFoodImpact : SystemCombineFoodAbs
             cookmove.isCombinedArea = false;
             this.SystemCombineFoodCtrl.SystemArrange.RemoveObject(other.transform.parent);
             candidates.Remove(obj);
+            Debug.LogWarning("fg");
 
         }
     }

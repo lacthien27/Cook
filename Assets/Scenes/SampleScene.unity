@@ -1875,6 +1875,7 @@ MonoBehaviour:
   foodCookImpact: {fileID: 358510558}
   foodCookPickup: {fileID: 1249525228}
   foodCookMove: {fileID: 1184067759}
+  foodCookTurnOff: {fileID: 1626555096}
   food: 1
 --- !u!1 &1085197226
 GameObject:
@@ -2118,6 +2119,7 @@ MonoBehaviour:
   foodCookImpact: {fileID: 2110967507}
   foodCookPickup: {fileID: 1876451935}
   foodCookMove: {fileID: 1505470958}
+  foodCookTurnOff: {fileID: 1299988374}
   food: 1
 --- !u!1 &1249525226
 GameObject:
@@ -2308,6 +2310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodCookCtrl: {fileID: 1233912601}
+  isInSysTemCombineFoodArea: 0
 --- !u!1 &1354425188
 GameObject:
   m_ObjectHideFlags: 0
@@ -2663,6 +2666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodCookCtrl: {fileID: 1050908587}
+  isInSysTemCombineFoodArea: 0
 --- !u!1 &1629119328
 GameObject:
   m_ObjectHideFlags: 0
@@ -2812,6 +2816,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodCookCtrl: {fileID: 1687303303}
+  isInSysTemCombineFoodArea: 0
 --- !u!1 &1665057246
 GameObject:
   m_ObjectHideFlags: 0
@@ -3059,6 +3064,7 @@ MonoBehaviour:
   foodCookImpact: {fileID: 318280130}
   foodCookPickup: {fileID: 262083826}
   foodCookMove: {fileID: 1686904448}
+  foodCookTurnOff: {fileID: 1641822276}
   food: 1
 --- !u!1 &1695185296
 GameObject:
@@ -3137,7 +3143,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   systemCombineFoodCtrl: {fileID: 925848791}
   listDish: []
-  isSnapped: 0
   offsetX: 1
 --- !u!1 &1749001176
 GameObject:
@@ -3615,7 +3620,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   systemCombineFoodCtrl: {fileID: 1759975913}
   listDish: []
-  isSnapped: 0
   offsetX: 1
 --- !u!4 &2039625303
 Transform:

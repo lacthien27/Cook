@@ -73,8 +73,8 @@ public class SystemCombineFood : SystemCombineFoodAbs
   void ClearIngredients()
   {
 
-    currentFoods.Clear();  //list Data
     this.SystemCombineFoodCtrl.SystemArrange.listDish.Clear(); //list Transform
+    currentFoods.Clear();  
 
 
     }
