@@ -7,7 +7,7 @@ public interface IsPickupAble
   void OnDrop(); // Khi được thả
 
 
-  bool isAreaImpact { get; set; }
+  bool isAreaMouse { get; set; }
   bool isPickUp { get; set; }
 
 }

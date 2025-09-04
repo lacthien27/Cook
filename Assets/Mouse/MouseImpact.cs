@@ -8,7 +8,7 @@ public class MouseImpact : MouseAbs
 
    [SerializeField] public static FoodCookImpact currentObject;
    
-   [SerializeField] private bool hasPicked = false;
+   [SerializeField] private bool hasPicked = false;// do not drag 1 time 2 object
 
    private void OnTriggerEnter2D(Collider2D other)
    {
@@ -19,7 +19,7 @@ public class MouseImpact : MouseAbs
          var objCtrl = other.transform.parent.GetComponent<FoodCookCtrl>();
          if (objCtrl.FoodCookPickup.TryGetComponent(out IsPickupAble ObjPickup))
          {
-            ObjPickup.isAreaImpact = true;
+            ObjPickup.isAreaMouse = true;
             hasPicked = true; // gắn cờ
 
 
@@ -34,7 +34,7 @@ public class MouseImpact : MouseAbs
            var objCtrl = other.transform.parent.GetComponent<FoodCookCtrl>();
          if (objCtrl.FoodCookPickup.TryGetComponent(out IsPickupAble ObjPickup))
          {
-            ObjPickup.isAreaImpact = false;
+            ObjPickup.isAreaMouse = false;
                           hasPicked = false; // gắn cờ
 
            }

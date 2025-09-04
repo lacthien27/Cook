@@ -29,6 +29,9 @@ public class GameCtrl : ThienMonoBehaviour
 [SerializeField ] protected SystemCombineFoodCtrl systemCombineFoodCtrl;
   public SystemCombineFoodCtrl SystemCombineFoodCtrl => systemCombineFoodCtrl;
 
+[SerializeField ] protected  Transform storageIngredients;
+  public Transform  StorageIngredients => storageIngredients;
+
 
 
   protected override void Awake()
@@ -48,12 +51,21 @@ public class GameCtrl : ThienMonoBehaviour
     this.LoadMouseCtrl();
     this.LoadSpawnerFoodForCook();
     this.LoadSystemCombineFoodCtrl();
+    this.LoadStorageIngredients();
     
 
 
   }
 
-  
+  protected virtual void LoadStorageIngredients()
+  {
+
+    if (storageIngredients != null) return;
+    storageIngredients = GameObject.Find("StorageIngredients").transform;
+    Debug.Log(transform.name + "Load StorageIngredients", gameObject);
+
+
+  }
 
 
   protected virtual void LoadSystemCombineFoodCtrl()

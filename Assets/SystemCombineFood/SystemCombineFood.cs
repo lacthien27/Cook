@@ -18,7 +18,7 @@ public class SystemCombineFood : SystemCombineFoodAbs
   public void GetListFoodData() // get Data from Transform list in SystemArrange
     {
       currentFoods.Clear(); // Xóa list cũ trước khi build lại
-      foreach (var obj in this.SystemCombineFoodCtrl.SystemArrange.listDish)
+      foreach (var obj in this.SystemCombineFoodCtrl.SystemCombineArrange.listDish)
       {
         var foodCtrl = obj.GetComponent<FoodCookCtrl>();
         FoodData foodData = foodCtrl.FoodCookPro.FoodData;
@@ -51,11 +51,11 @@ public class SystemCombineFood : SystemCombineFoodAbs
     bool MatchRecipe(RecipeSO recipe)
 {
     var need = recipe.inputFoods
-        .GroupBy(x => x.type)
+        .GroupBy(x => x.FoodType)
         .ToDictionary(g => g.Key, g => g.Count());
 
     var have = this.currentFoods
-        .GroupBy(x => x.type)
+        .GroupBy(x => x.FoodType)
         .ToDictionary(g => g.Key, g => g.Count());
 
     if (need.Count != have.Count) return false;
@@ -73,7 +73,7 @@ public class SystemCombineFood : SystemCombineFoodAbs
   void ClearIngredients()
   {
 
-    this.SystemCombineFoodCtrl.SystemArrange.listDish.Clear(); //list Transform
+    this.SystemCombineFoodCtrl.SystemCombineArrange.listDish.Clear(); //list Transform
     currentFoods.Clear();  
 
 
@@ -82,7 +82,7 @@ public class SystemCombineFood : SystemCombineFoodAbs
 
   protected virtual void OnlyGetObjBelongOWner()  //  chỉ lấy các object thuộc cùng 1 SystemCombineFood 
   {
-    foreach (var obj in this.SystemCombineFoodCtrl.SystemArrange.listDish) // dùng ToList() để tránh lỗi khi xóa phần tử trong vòng lặp
+    foreach (var obj in this.SystemCombineFoodCtrl.SystemCombineArrange.listDish) // dùng ToList() để tránh lỗi khi xóa phần tử trong vòng lặp
     {
       var objCtrl = obj.GetComponent<FoodCookCtrl>();
       objCtrl.FoodCookTurnOff.isInSysTemCombineFoodArea = true; // set true cho các object trong vùng va chạm

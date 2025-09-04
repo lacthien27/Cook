@@ -11,7 +11,7 @@ public class FoodData : ScriptableObject
 
     public int money;
 
-    public FoodType type; 
+    public FoodType FoodType; 
 
     public isStateFood stateFood; // dùng để làm điều kiện lấy trạng thái hay ko 
 
@@ -41,7 +41,7 @@ public enum isStateFood
 
 }
 
-public enum Separate
+public enum Category
 {
     Ingredient,
     Dish,

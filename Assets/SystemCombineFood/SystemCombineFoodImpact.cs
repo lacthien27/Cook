@@ -33,11 +33,11 @@ public class SystemCombineFoodImpact : SystemCombineFoodAbs
 
         if (other.transform.name == "Impact")
         {
-            this.systemCombineFoodCtrl.SystemArrange.UpdatePositions();
+            this.systemCombineFoodCtrl.SystemCombineArrange.UpdatePositions();
 
             if (!GameCtrl.Instance.MouseCtrl.MousePos.isDrag && candidates.Contains(obj))
             {
-                this.SystemCombineFoodCtrl.SystemArrange.AddObject(other.transform.parent);
+                this.SystemCombineFoodCtrl.SystemCombineArrange.AddObject(other.transform.parent);
                 this.candidates.Remove(obj);
 
             }
@@ -51,9 +51,8 @@ public class SystemCombineFoodImpact : SystemCombineFoodAbs
             var obj = other.transform.parent;
             var cookmove = other.transform.parent.GetComponentInChildren<FoodCookMove>();
             cookmove.isCombinedArea = false;
-            this.SystemCombineFoodCtrl.SystemArrange.RemoveObject(other.transform.parent);
+            this.SystemCombineFoodCtrl.SystemCombineArrange.RemoveObject(other.transform.parent);
             candidates.Remove(obj);
-            Debug.LogWarning("fg");
 
         }
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class SystemCombineFoodCtrl : GameAbs
 {
 
-  
+  //2 object SystemCombineFood phải ko dc trùng nhau vị trí phải cách nhau boa nhiêu cung dc ,
 
     [SerializeField] protected SystemCombineFood systemCombineFood;
     public SystemCombineFood SystemCombineFood => systemCombineFood;
@@ -14,8 +14,8 @@ public class SystemCombineFoodCtrl : GameAbs
     [SerializeField] protected SystemCombineDirectory systemCombineDirectory;
     public SystemCombineDirectory SystemCombineDirectory => systemCombineDirectory;
 
-      [SerializeField] protected SystemArrange systemArrange;
-    public SystemArrange SystemArrange => systemArrange;
+      [SerializeField] protected SystemCombineArrange systemCombineArrange;
+    public SystemCombineArrange SystemCombineArrange => systemCombineArrange;
 
 
 
@@ -23,7 +23,7 @@ public class SystemCombineFoodCtrl : GameAbs
     protected override void LoadComponents()
     {
         base.LoadComponents();
-        this.LoadSystemArrange();
+        this.LoadSystemCombineArrange();
         this.LoadSystemCombineFood();
         this.LoacSystemCombineDirectory();
     }
@@ -47,11 +47,11 @@ public class SystemCombineFoodCtrl : GameAbs
         Debug.LogWarning(transform.name + " : Load SystemCombineFood", gameObject);
     }
 
-    protected virtual void LoadSystemArrange()
+    protected virtual void LoadSystemCombineArrange()
     {
-        if (this.systemArrange != null) return;
-        this.systemArrange = GetComponentInChildren<SystemArrange>();
-        Debug.LogWarning(transform.name + " : Load SystemArrange", gameObject);
+        if (this.systemCombineArrange != null) return;
+        this.systemCombineArrange = GetComponentInChildren<SystemCombineArrange>();
+        Debug.LogWarning(transform.name + " : Load SystemCombineArrange", gameObject);
     }
 
 

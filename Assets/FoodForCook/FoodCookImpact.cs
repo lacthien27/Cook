@@ -33,7 +33,7 @@ public class FoodCookImpact : FoodCookAbs
          var objCtrl = other.transform.parent.GetComponent<FoodCookCtrl>();
             if (objCtrl.FoodCookPickup.TryGetComponent(out IsPickupAble ObjPickup))
             {
-                if (ObjPickup.isAreaImpact == true) return;  // if the object is already in the area impact, thì cứ cho nó di chuyển
+                if (ObjPickup.isAreaMouse == true) return;  // if the object is already in the area impact, thì cứ cho nó di chuyển
                     ObjPickup.isPickUp = true;              //if object is not in the area impact, will not allow to  move 
 
                 

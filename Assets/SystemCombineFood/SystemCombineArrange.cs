@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class SystemArrange : SystemCombineFoodAbs
+public class SystemCombineArrange : SystemCombineFoodAbs
 {
-     public List<Transform> listDish = new List<Transform>(); //foodForCookCtrl
+    public List<Transform> listDish = new List<Transform>(); //foodForCookCtrl
 
      public float offsetX = 1.0f;
 

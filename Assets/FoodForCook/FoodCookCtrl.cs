@@ -21,6 +21,8 @@ public class FoodCookCtrl : ThienMonoBehaviour
     [SerializeField] protected FoodCookTurnOff foodCookTurnOff;
     public FoodCookTurnOff FoodCookTurnOff => foodCookTurnOff;
 
+
+
     public int food = 1;
     protected override void LoadComponents()
     {
@@ -31,6 +33,8 @@ public class FoodCookCtrl : ThienMonoBehaviour
         this.LoadFoodCookPickup();
         this.LoadFoodTurnOff();
     }
+
+  
 
     protected virtual void LoadFoodTurnOff()
     {

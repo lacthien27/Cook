@@ -8,7 +8,7 @@ public class FoodCookPro : FoodCookAbs
     public FoodData FoodData => foodData;
 
 
-    [SerializeField]   public Separate type; 
+    [SerializeField]   public Category type; 
 
 }
 
