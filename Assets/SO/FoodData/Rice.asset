@@ -15,4 +15,5 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 23abe81ce073db646a857a82652f6835, type: 3}
   timeCook: 2
   money: 2
-  type: 1
+  FoodType: 1
+  stateFood: 0

@@ -24,24 +24,15 @@ public class SpawnerFoodForCook : Spawner
     protected override void Start()
     {
         this.SpawnFoodCook();
-        InvokeRepeating(nameof(SpawnFoodCook), 3f, 3f);
+        InvokeRepeating(nameof(SpawnFoodCook), 3f,500f);
 
     }
 
     public virtual void SpawnFoodCook()
     {
-        //  var foodForCook = this.Spawn(this.RandomIngredient(), GameCtrl.Instance.KitChenCabinet.transform.position, Quaternion.identity);
-        //var foodForCook = this.Spawn(this.RandomIngredient(), this.FindParrent(RandomIngredient()).position, Quaternion.identity);
-        // Debug.LogWarning(this.FindParrent(RandomIngredient()).transform.name);
-        //foodForCook.gameObject.SetActive(true);
-
         var foodForCook = this.Spawn(this.RandomIngredient(), transform.parent.position, Quaternion.identity);
-        //Debug.LogWarning(this.FindParrent(RandomIngredient()).transform.name);'
         foodForCook.transform.position= this.FindParrent(foodForCook).position;
         foodForCook.gameObject.SetActive(true);
-
-
-
     }
     
 
@@ -64,17 +55,14 @@ public class SpawnerFoodForCook : Spawner
     {
         var objCtrl = obj.GetComponent<FoodCookCtrl>();
         var objPro = objCtrl.FoodCookPro.FoodData.FoodType;
-        Debug.Log("Input FoodType: " + objPro.ToString()); // Log type của input mỗi lần
 
         foreach (Transform Storage in GameCtrl.Instance.StorageIngredients)
         {
             var StorageCtrl = Storage.transform.GetComponent<StorageIgdCtrl>();
             var StoragePro = StorageCtrl.StorageIgdPro.FoodData.FoodType;
-            Debug.Log("Checking Storage: " + Storage.name + " with type: " + StoragePro.ToString()); // Log từng Storage
 
             if (objPro == StoragePro)
             {
-                // obj.transform.position = Storage.transform.position;
                 return Storage; // Trả về Transform của Storage phù hợp                
             }
         }
