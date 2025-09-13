@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 23abe81ce073db646a857a82652f6835, type: 3}
   timeCook: 2
+  timeBurned: 10
   money: 2
   FoodType: 1
   stateFood: 0

@@ -9,6 +9,8 @@ public class FoodData : ScriptableObject
     public Sprite icon;
     public float timeCook;
 
+    public float timeBurned;
+
     public int money;
 
     public FoodType FoodType; 

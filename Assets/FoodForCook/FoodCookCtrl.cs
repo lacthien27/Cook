@@ -20,10 +20,13 @@ public class FoodCookCtrl : ThienMonoBehaviour
 
     [SerializeField] protected FoodCookTurnOff foodCookTurnOff;
     public FoodCookTurnOff FoodCookTurnOff => foodCookTurnOff;
+ [SerializeField] protected StateFood stateFood;
+    public StateFood StateFood => stateFood;
 
 
+    [SerializeField] protected FoodCookTimer foodCookTimer;
 
-    public int food = 1;
+    public FoodCookTimer FoodCookTimer => foodCookTimer;
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -32,9 +35,23 @@ public class FoodCookCtrl : ThienMonoBehaviour
         this.LoadFoodCookMove();
         this.LoadFoodCookPickup();
         this.LoadFoodTurnOff();
+        this.LoadStateFood();
+        this.LoadFoodCookTimer();
     }
 
-  
+    protected virtual void LoadFoodCookTimer()
+    {
+         if (this.foodCookTimer != null) return;
+        this.foodCookTimer = GetComponentInChildren<FoodCookTimer>();
+        Debug.LogWarning(transform.name + " : Load FoodCookTimer", gameObject);
+    }
+
+    protected virtual void LoadStateFood()
+    {
+        if (this.stateFood != null) return;
+        this.stateFood = GetComponentInChildren<StateFood>();
+        Debug.LogWarning(transform.name + " : Load StateFood", gameObject);
+    }
 
     protected virtual void LoadFoodTurnOff()
     {

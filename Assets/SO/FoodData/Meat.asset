@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Meat
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
-  timeCook: 1
-  money: 1
+  timeCook: 5
+  timeBurned: 10
+  money: 10
   FoodType: 2
   stateFood: 0
