@@ -34,25 +34,25 @@ public class StateFood : FoodCookAbs
 
     private void OnRaw()
     {
-        Debug.Log($"{name} đang ở trạng thái RAW");
+      //  Debug.Log($"{name} đang ở trạng thái RAW");
     }
 
     private void OnCooking()
     {
-        Debug.Log($"{name} bắt đầu COOKING");
+      //  Debug.Log($"{name} bắt đầu COOKING");
         // ví dụ: bật animation, hiệu ứng lửa
     }
 
     private void OnCooked()
     {
-        Debug.Log($"{name} đã COOKED");
+       // Debug.Log($"{name} đã COOKED");
         // ví dụ: đổi màu, cho phép ăn/serve
     }
 
     private void OnBurned()
     {
-        Debug.Log($"{name} bị BURNED");
-        // ví dụ: đổi sang màu đen, mất điểm
+       // Debug.Log($"{name} bị BURNED");
+       // // ví dụ: đổi sang màu đen, mất điểm
     }
 }
 

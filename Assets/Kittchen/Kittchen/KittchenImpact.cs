@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class BarGrillImpact : BarGrillAbs
+public class KittchenImpact : KittchenAbs
 {
-    
+    [SerializeField] public float cookTimeAdd = 0f;
+
+        [SerializeField] public float burnTimeAdd = 0f;
+
+
         private HashSet<Transform> candidates = new HashSet<Transform>();
 
         protected virtual void OnTriggerEnter2D(Collider2D other)
@@ -28,11 +33,13 @@ public class BarGrillImpact : BarGrillAbs
 
             if (!GameCtrl.Instance.MouseCtrl.MousePos.isDrag && candidates.Contains(obj))
             {
-                this.BarGrillCtrl.BarGrillArrange.AddObject(obj);
+                this.kittchenCtrl.KittchenArrange.AddObject(obj);
                 this.candidates.Remove(obj);
-                this.BarGrillCtrl.BarGrillScreening.ScreeningFood(obj);  // screening khi thả obj
+                this.kittchenCtrl.KittchenScreening.ScreeningFood(obj);  // screening khi thả obj
                 var objCtrl = obj.GetComponent<FoodCookCtrl>();
                 var ObjCookTimer = objCtrl.FoodCookTimer;
+                ObjCookTimer.burnTime += burnTimeAdd;
+                ObjCookTimer.cookTime += cookTimeAdd;
                 ObjCookTimer.StartCooking();
                 }
 
@@ -41,7 +48,7 @@ public class BarGrillImpact : BarGrillAbs
             if (GameCtrl.Instance.MouseCtrl.MousePos.isDrag && !candidates.Contains(obj))
             {
                 this.candidates.Add(obj);
-                this.BarGrillCtrl.BarGrillArrange.RemoveObject(obj);// rest slot khi đang kéo, thiếu sẽ bị lỗi obj còn lại di chuyển khi 1 obj khác di chuyển 
+                this.kittchenCtrl.KittchenArrange.RemoveObject(obj);// rest slot khi đang kéo, thiếu sẽ bị lỗi obj còn lại di chuyển khi 1 obj khác di chuyển 
 
             }
                
@@ -55,7 +62,7 @@ public class BarGrillImpact : BarGrillAbs
             var obj = other.transform.parent;
             var cookmove = other.transform.parent.GetComponentInChildren<FoodCookMove>();
             cookmove.isCombinedArea = false;
-            this.BarGrillCtrl.BarGrillArrange.RemoveObject(obj);
+            this.kittchenCtrl.KittchenArrange.RemoveObject(obj);
             this.candidates.Remove(obj);
              var objCtrl = obj.GetComponent<FoodCookCtrl>();
             var ObjCookTimer = objCtrl.FoodCookTimer;

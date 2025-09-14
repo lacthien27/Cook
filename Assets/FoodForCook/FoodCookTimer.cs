@@ -25,10 +25,10 @@ public class FoodCookTimer : FoodCookAbs
         if (isOnBarGrill && this.FoodCookCtrl.StateFood.currentState == FoodState.Cooking)
         {
             timer += Time.deltaTime;
-
             if (timer >= cookTime)
             {
                 this.FoodCookCtrl.StateFood.ChangeState(FoodState.Cooked);
+                Debug.LogWarning("cook finish" + transform.parent.name);
             }
             
         }
@@ -40,6 +40,7 @@ public class FoodCookTimer : FoodCookAbs
             if (timer >= burnTime)
             {
                 this.FoodCookCtrl.StateFood.ChangeState(FoodState.Burned);
+                Debug.LogWarning("cook burned" + transform.parent.name);
 
             }
         }
@@ -51,18 +52,19 @@ public class FoodCookTimer : FoodCookAbs
     // gọi hàm này khi đặt lên bếp
     public void StartCooking()
     {
-        // timer = 0f;
-        this.FoodCookCtrl.StateFood.ChangeState(FoodState.Cooking);
+        if (this.FoodCookCtrl.StateFood.currentState == FoodState.Raw)
+        {
+                this.FoodCookCtrl.StateFood.ChangeState(FoodState.Cooking);
 
         isOnBarGrill = true;
+        }
+        
 
     }
 
     // gọi hàm này khi nhấc khỏi bếp
     public void StopCooking()
-    {
-        // timer = 0f;
-                       isOnBarGrill = false;
+    {                       isOnBarGrill = false;
 
 
     }

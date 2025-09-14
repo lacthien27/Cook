@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BarGrillArrange : BarGrillAbs
+public class KittchenArrange : KittchenAbs
 {
     public List<Transform> slots = new List<Transform>(); // 4 slot transform đặt thủ công trong editor
     private Dictionary<Transform, Transform> assignedSlots = new Dictionary<Transform, Transform>();
