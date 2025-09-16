@@ -29,6 +29,7 @@ public class SystemCombineDirectory : SystemCombineFoodAbs
             if (foodMapping.foodData != null && foodMapping.foodTransform != null)
             {
                 prefabMap[foodMapping.foodData] = foodMapping.foodTransform;
+
             }
         }
     }
@@ -49,23 +50,17 @@ public class SystemCombineDirectory : SystemCombineFoodAbs
         if (prefabMap.TryGetValue(key, out Transform value))
         {
             return value;
+
         }
 
-        Debug.LogWarning("Không tìm thấy transform cho " + key.name);
+        Debug.LogWarning("Không tìm thấy transform cho " + key.name+"vao FoodMapping  coi lại ");  
+        
         return null;
     }
 }
 
 
 
-// thử cách  này  tạo 2 list 1 list fooddata 1 list transform
-// sau đó 2 list này  sẽ  được  điền  trong  inspector
-// sau đó  trong hàm  load directory food  sẽ  dùng 1 vòng for  
-// để  điền  các  phần  tử  của 2 list này vào  trong dictionary
-// foodmap.Add(listfooddata[i], listtransform[i])
-//  cách này  sẽ  giúp  dễ dàng  hơn trong việc  quản lý  các  fooddata và transform
-//  và  dễ dàng  hơn trong việc  thêm  bớt  các  fooddata và transform
-//  mà  không cần phải  sửa  code
 
 
 

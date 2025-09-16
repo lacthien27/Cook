@@ -48,6 +48,8 @@ public enum Category
     Ingredient,
     Dish,
 
+    Spice,
+
 }
 
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FoodCookPro : FoodCookAbs
+public class FoodPro : FoodAbs
 {
     [SerializeField] private FoodData foodData;
     public FoodData FoodData => foodData;

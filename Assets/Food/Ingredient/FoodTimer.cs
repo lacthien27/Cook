@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FoodCookTimer : FoodCookAbs
+public class FoodTimer : FoodAbs
 {
      public float cookTime = 5f;     // thời gian để nấu chín
     public float burnTime = 8f;     // thời gian để cháy (sau khi chín)
@@ -14,32 +14,32 @@ public class FoodCookTimer : FoodCookAbs
     protected override void LoadComponents()
     {
         base.LoadComponents();
-        this.cookTime = this.FoodCookCtrl.FoodCookPro.FoodData.timeCook;
-        this.burnTime= this.FoodCookCtrl.FoodCookPro.FoodData.timeBurned;
+        this.cookTime = this.FoodCtrl.FoodPro.FoodData.timeCook;
+        this.burnTime= this.FoodCtrl.FoodPro.FoodData.timeBurned;
 
     }
 
     protected virtual void Update()
     {
 
-        if (isOnBarGrill && this.FoodCookCtrl.StateFood.currentState == FoodState.Cooking)
+        if (isOnBarGrill && this.FoodCtrl.FoodState.currentState == StateOfFood.Cooking)
         {
             timer += Time.deltaTime;
             if (timer >= cookTime)
             {
-                this.FoodCookCtrl.StateFood.ChangeState(FoodState.Cooked);
+                this.FoodCtrl.FoodState.ChangeState(StateOfFood.Cooked);
                 Debug.LogWarning("cook finish" + transform.parent.name);
             }
             
         }
 
-        if (isOnBarGrill && this.FoodCookCtrl.StateFood.currentState == FoodState.Cooked)
+        if (isOnBarGrill && this.FoodCtrl.FoodState.currentState == StateOfFood.Cooked)
         {
             timer += Time.deltaTime;
 
             if (timer >= burnTime)
             {
-                this.FoodCookCtrl.StateFood.ChangeState(FoodState.Burned);
+                this.FoodCtrl.FoodState.ChangeState(StateOfFood.Burned);
                 Debug.LogWarning("cook burned" + transform.parent.name);
 
             }
@@ -52,9 +52,9 @@ public class FoodCookTimer : FoodCookAbs
     // gọi hàm này khi đặt lên bếp
     public void StartCooking()
     {
-        if (this.FoodCookCtrl.StateFood.currentState == FoodState.Raw)
+        if (this.FoodCtrl.FoodState.currentState == StateOfFood.Raw)
         {
-                this.FoodCookCtrl.StateFood.ChangeState(FoodState.Cooking);
+                this.FoodCtrl.FoodState.ChangeState(StateOfFood.Cooking);
 
         isOnBarGrill = true;
         }

@@ -28,7 +28,7 @@ public class KittchenImpact : KittchenAbs
         if (other.transform.name == "Impact")
         {
             var obj = other.transform.parent;
-            var cookmove = other.transform.parent.GetComponentInChildren<FoodCookMove>();
+            var cookmove = other.transform.parent.GetComponentInChildren<FoodMove>();
             cookmove.isCombinedArea = true;    //  nếu đặt ở enter sẽ bị lỗi 2 systemcombine ko enter cùng lúc -> object sẽ trả lại vị trí ban đầu
 
             if (!GameCtrl.Instance.MouseCtrl.MousePos.isDrag && candidates.Contains(obj))
@@ -36,11 +36,11 @@ public class KittchenImpact : KittchenAbs
                 this.kittchenCtrl.KittchenArrange.AddObject(obj);
                 this.candidates.Remove(obj);
                 this.kittchenCtrl.KittchenScreening.ScreeningFood(obj);  // screening khi thả obj
-                var objCtrl = obj.GetComponent<FoodCookCtrl>();
-                var ObjCookTimer = objCtrl.FoodCookTimer;
-                ObjCookTimer.burnTime += burnTimeAdd;
-                ObjCookTimer.cookTime += cookTimeAdd;
-                ObjCookTimer.StartCooking();
+                var objCtrl = obj.GetComponent<FoodCtrl>();
+                var ObjTimer = objCtrl.FoodTimer;
+                ObjTimer.burnTime += burnTimeAdd;
+                ObjTimer.cookTime += cookTimeAdd;
+                ObjTimer.StartCooking();
                 }
 
 
@@ -60,13 +60,13 @@ public class KittchenImpact : KittchenAbs
         if (other.transform.name == "Impact")
         {
             var obj = other.transform.parent;
-            var cookmove = other.transform.parent.GetComponentInChildren<FoodCookMove>();
-            cookmove.isCombinedArea = false;
+            var foodmove = other.transform.parent.GetComponentInChildren<FoodMove>();
+            foodmove.isCombinedArea = false;
             this.kittchenCtrl.KittchenArrange.RemoveObject(obj);
             this.candidates.Remove(obj);
-             var objCtrl = obj.GetComponent<FoodCookCtrl>();
-            var ObjCookTimer = objCtrl.FoodCookTimer;
-            ObjCookTimer.StopCooking();
+             var objCtrl = obj.GetComponent<FoodCtrl>();
+            var ObjTimer = objCtrl.FoodTimer;
+            ObjTimer.StopCooking();
             
             
 

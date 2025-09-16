@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StateFood : FoodCookAbs
+public class FoodState : FoodAbs
 {
-   public FoodState currentState = FoodState.Raw;   // mặc định ban đầu là sống
+   public StateOfFood currentState = StateOfFood.Raw;   // mặc định ban đầu là sống
 
-    public void ChangeState(FoodState newState)
+    public void ChangeState(StateOfFood newState)
     {
         if (currentState == newState) return;
 
@@ -14,19 +14,19 @@ public class StateFood : FoodCookAbs
 
         switch (newState)
         {
-            case FoodState.Raw:
+            case StateOfFood.Raw:
                 OnRaw();
                 break;
 
-            case FoodState.Cooking:
+            case StateOfFood.Cooking:
                 OnCooking();
                 break;
 
-            case FoodState.Cooked:
+            case StateOfFood.Cooked:
                 OnCooked();
                 break;
 
-            case FoodState.Burned:
+            case StateOfFood.Burned:
                 OnBurned();
                 break;
         }
@@ -57,7 +57,7 @@ public class StateFood : FoodCookAbs
 }
 
 
-public enum FoodState
+public enum StateOfFood
 {
     Raw,        // sống
     Cooking,    // đang nấu

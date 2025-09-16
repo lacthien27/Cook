@@ -6,7 +6,7 @@ using UnityEngine;
 public class MouseImpact : MouseAbs
 {
 
-   [SerializeField] public static FoodCookImpact currentObject;
+   [SerializeField] public static FoodImpact currentObject;
    
    [SerializeField] private bool hasPicked = false;// do not drag 1 time 2 object
 
@@ -14,10 +14,10 @@ public class MouseImpact : MouseAbs
    {
           if (hasPicked) return; // đã pick 1 object rồi thì bỏ qua
 
-      if (other.transform.parent.GetComponent<FoodCookCtrl>())
+      if (other.transform.parent.GetComponent<FoodCtrl>())
       {
-         var objCtrl = other.transform.parent.GetComponent<FoodCookCtrl>();
-         if (objCtrl.FoodCookPickup.TryGetComponent(out IsPickupAble ObjPickup))
+         var objCtrl = other.transform.parent.GetComponent<FoodCtrl>();
+         if (objCtrl.FoodPickup.TryGetComponent(out IsPickupAble ObjPickup))
          {
             ObjPickup.isAreaMouse = true;
             hasPicked = true; // gắn cờ
@@ -29,10 +29,10 @@ public class MouseImpact : MouseAbs
 
    private void OnTriggerExit2D(Collider2D other)
    {
-        if (other.transform.parent.GetComponent<FoodCookCtrl>())
+        if (other.transform.parent.GetComponent<FoodCtrl>())
         {
-           var objCtrl = other.transform.parent.GetComponent<FoodCookCtrl>();
-         if (objCtrl.FoodCookPickup.TryGetComponent(out IsPickupAble ObjPickup))
+           var objCtrl = other.transform.parent.GetComponent<FoodCtrl>();
+         if (objCtrl.FoodPickup.TryGetComponent(out IsPickupAble ObjPickup))
          {
             ObjPickup.isAreaMouse = false;
                           hasPicked = false; // gắn cờ

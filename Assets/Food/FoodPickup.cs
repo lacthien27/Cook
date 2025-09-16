@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FoodCookPickup : FoodCookAbs, IsPickupAble
+public class FoodPickup : FoodAbs, IsPickupAble
 {
     
     [SerializeField]     public  bool isAreaMouse { get; set; }   // is in zone impact off  mouse
@@ -27,7 +27,7 @@ public class FoodCookPickup : FoodCookAbs, IsPickupAble
         if (isPickUp == true) return;
                 if (isAreaMouse == true && GameCtrl.Instance.MouseCtrl.MousePos.isDrag)
                 {
-                    this.foodCookCtrl.FoodCookMove.Move();
+                    this.foodCtrl.FoodMove.Move();
                 }
     }
 
@@ -37,7 +37,7 @@ public class FoodCookPickup : FoodCookAbs, IsPickupAble
         if (isAreaMouse == true && !GameCtrl.Instance.MouseCtrl.MousePos.isDrag)
         {
             isPickUp = false;
-            this.foodCookCtrl.FoodCookMove.ReturnToStartPos();
+            this.foodCtrl.FoodMove.ReturnToStartPos();
 
         }
         

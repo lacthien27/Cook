@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Video;
 
-public class FoodCookMove : FoodCookAbs
+public class FoodMove : FoodAbs
 {
 
    public Vector3 startPos;

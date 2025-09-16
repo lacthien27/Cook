@@ -4,57 +4,42 @@ using UnityEngine;
 using System;
 
 
-public class SpawnerFoodForCook : Spawner
+public class SpawnerIngredient : Spawner
 {
-    [SerializeField] protected List<Transform> Listdishs = new List<Transform>();
 
-    [SerializeField] protected List<Transform> ListIngredients = new List<Transform>();
-
-    //public static event Action OnSpawnFoodForCook;
-
+   // [SerializeField] protected List<Transform> ListIngredients = new List<Transform>();
 
 
     protected override void LoadComponents()
     {
         base.LoadComponents();
-        this.SeparateObj();    // always separate obj first before spawn
 
     }
 
     protected override void Start()
     {
         this.SpawnFoodCook();
-        InvokeRepeating(nameof(SpawnFoodCook), 3f,500f);
+        InvokeRepeating(nameof(SpawnFoodCook), 3f,3f);
 
     }
 
     public virtual void SpawnFoodCook()
     {
-        var foodForCook = this.Spawn(this.RandomIngredient(), transform.parent.position, Quaternion.identity);
+        var foodForCook = this.Spawn(this.RandomPrefab(), transform.parent.position, Quaternion.identity);
         foodForCook.transform.position= this.FindParrent(foodForCook).position;
         foodForCook.gameObject.SetActive(true);
     }
-    
-
-    public virtual void SpawnDish(Transform dish, Vector3 pos)
-    {
-        var dishSpawned = this.Spawn(dish, pos, Quaternion.identity);
-        dishSpawned.gameObject.SetActive(true);
-    }
-
+    /**
     public virtual Transform RandomIngredient()
     {
         int rand = UnityEngine.Random.Range(0, this.ListIngredients.Count);
         return this.ListIngredients[rand];
-
-
-    }
-
+    }**/
 
     public virtual Transform FindParrent(Transform obj)
     {
-        var objCtrl = obj.GetComponent<FoodCookCtrl>();
-        var objPro = objCtrl.FoodCookPro.FoodData.FoodType;
+        var objCtrl = obj.GetComponent<FoodCtrl>();
+        var objPro = objCtrl.FoodPro.FoodData.FoodType;
 
         foreach (Transform Storage in GameCtrl.Instance.StorageIngredients)
         {
@@ -71,23 +56,28 @@ public class SpawnerFoodForCook : Spawner
 
 
 
-    protected virtual void SeparateObj()
+  /**  protected virtual void SeparateObj()
     {
         this.Listdishs.Clear();
         this.ListIngredients.Clear();
+        this.Listspices.Clear();
         foreach (var item in this.prefabs)
         {
             var FoodCtrl = item.GetComponent<FoodCookCtrl>();
             var FoodPro = FoodCtrl.FoodCookPro;
-            if (FoodPro.type == Category.Dish)
+            if (FoodPro.type == Category.Dish)    // nên sài swtich
             {
                 this.Listdishs.Add(item.transform);
             }
-            else 
+            else if (FoodPro.type == Category.Ingredient)
             {
                 this.ListIngredients.Add(item.transform);
             }
+            else
+            {
+                this.Listspices.Add(item.transform);
+            }
         }
 
-    }
+    }**/
 }

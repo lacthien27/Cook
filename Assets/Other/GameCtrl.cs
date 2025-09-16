@@ -24,13 +24,22 @@ public class GameCtrl : ThienMonoBehaviour
   public MouseCtrl MouseCtrl => mouseCtrl;
 
 
-[SerializeField] protected SpawnerFoodForCook spawnerFoodForCook;
-  public SpawnerFoodForCook SpawnerFoodForCook => spawnerFoodForCook;
+[SerializeField] protected SpawnerIngredient spawnerIngredient;
+  public SpawnerIngredient SpawnerIngredient => spawnerIngredient;
 [SerializeField ] protected SystemCombineFoodCtrl systemCombineFoodCtrl;
   public SystemCombineFoodCtrl SystemCombineFoodCtrl => systemCombineFoodCtrl;
 
 [SerializeField ] protected  Transform storageIngredients;
   public Transform  StorageIngredients => storageIngredients;
+
+  [SerializeField] protected SpawnerDish spawnerDish;
+
+  public SpawnerDish SpawnerDish => spawnerDish;
+
+
+  [SerializeField] protected SpawnerSpice spawnerSpice;
+
+  public SpawnerSpice SpawnerSpice => spawnerSpice;
 
 
 
@@ -49,12 +58,29 @@ public class GameCtrl : ThienMonoBehaviour
     this.LoadSpawnerNpc();
     this.LoadKitChenCabinet();
     this.LoadMouseCtrl();
-    this.LoadSpawnerFoodForCook();
+    this.LoadSpawnerIngredient();
     this.LoadSystemCombineFoodCtrl();
     this.LoadStorageIngredients();
+    this.LoadSpawnerDish();
+    this.LoadSpawnerSpice();
     
 
 
+  }
+
+ protected virtual void LoadSpawnerSpice()
+  {
+    if (spawnerSpice != null) return;
+    this.spawnerSpice = GameCtrl.FindObjectOfType<SpawnerSpice>();
+    Debug.Log(transform.name + "Load SpawnerSpice", gameObject);
+  }
+
+
+  protected virtual void LoadSpawnerDish()
+  {
+    if (spawnerDish != null) return;
+    this.spawnerDish = GameCtrl.FindObjectOfType<SpawnerDish>();
+    Debug.Log(transform.name + "Load SpawnerDish", gameObject);
   }
 
   protected virtual void LoadStorageIngredients()
@@ -78,12 +104,12 @@ public class GameCtrl : ThienMonoBehaviour
   }
 
 
-  protected virtual void LoadSpawnerFoodForCook()
+  protected virtual void LoadSpawnerIngredient()
   {
 
-    if (this.spawnerFoodForCook != null) return;
-    this.spawnerFoodForCook = GameCtrl.FindObjectOfType<SpawnerFoodForCook>();
-    Debug.Log(transform.name + "Load SpawnerFoodForCook", gameObject);
+    if (this.spawnerIngredient != null) return;
+    this.spawnerIngredient = GameCtrl.FindObjectOfType<SpawnerIngredient>();
+    Debug.Log(transform.name + "Load SpawnerIngredient", gameObject);
 
   }
  

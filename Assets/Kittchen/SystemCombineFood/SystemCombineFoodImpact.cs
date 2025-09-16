@@ -25,7 +25,7 @@ public class SystemCombineFoodImpact : SystemCombineFoodAbs
         if (other.transform.name == "Impact")
         {
             var obj = other.transform.parent;
-            var cookmove = other.transform.parent.GetComponentInChildren<FoodCookMove>();
+            var cookmove = other.transform.parent.GetComponentInChildren<FoodMove>();
             cookmove.isCombinedArea = true;    //  nếu đặt ở enter sẽ bị lỗi 2 systemcombine ko enter cùng lúc -> object sẽ trả lại vị trí ban đầu
 
             this.systemCombineFoodCtrl.SystemCombineArrange.UpdatePositions();
@@ -42,7 +42,7 @@ public class SystemCombineFoodImpact : SystemCombineFoodAbs
         if (other.transform.name == "Impact")
         {
             var obj = other.transform.parent;
-            var cookmove = other.transform.parent.GetComponentInChildren<FoodCookMove>();
+            var cookmove = other.transform.parent.GetComponentInChildren<FoodMove>();
             cookmove.isCombinedArea = false;
             this.SystemCombineFoodCtrl.SystemCombineArrange.RemoveObject(other.transform.parent);
             candidates.Remove(obj);

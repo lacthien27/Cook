@@ -15,8 +15,8 @@ public class KittchenScreening : KittchenAbs
 
     public virtual void ScreeningFood(Transform obj)
     {
-        var objCtrl = obj.GetComponent<FoodCookCtrl>();
-        var objPro = objCtrl.FoodCookPro;
+        var objCtrl = obj.GetComponent<FoodCtrl>();
+        var objPro = objCtrl.FoodPro;
         foreach (var type in listTypeIngre)
         {
             if (objPro.FoodData.FoodType == type)
@@ -32,8 +32,8 @@ public class KittchenScreening : KittchenAbs
 
     protected virtual void RemoveIngre(Transform obj)
     {
-        var objCtrl = obj.GetComponent<FoodCookCtrl>();
-         objCtrl.FoodCookTurnOff.TurnOffWhenCook();
+        var objCtrl = obj.GetComponent<FoodCtrl>();
+         objCtrl.FoodTurnOff.TurnOffWhenCook();
 
         Debug.LogWarning("loai bo nguyen lieu khong hop le: " + obj.name);
     }

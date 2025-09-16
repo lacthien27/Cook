@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Video;
 
-public class FoodCookImpact : FoodCookAbs
+public class FoodImpact : FoodAbs
 {
 
     [SerializeField] public bool foodAsOrderd = false;// let the outside function use
@@ -28,10 +28,10 @@ public class FoodCookImpact : FoodCookAbs
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
 
-        if (other.transform.parent.GetComponent<FoodCookCtrl>())
+        if (other.transform.parent.GetComponent<FoodCtrl>())
       {
-         var objCtrl = other.transform.parent.GetComponent<FoodCookCtrl>();
-            if (objCtrl.FoodCookPickup.TryGetComponent(out IsPickupAble ObjPickup))
+         var objCtrl = other.transform.parent.GetComponent<FoodCtrl>();
+            if (objCtrl.FoodPickup.TryGetComponent(out IsPickupAble ObjPickup))
             {
                 if (ObjPickup.isAreaMouse == true) return;  // if the object is already in the area impact, thì cứ cho nó di chuyển
                     ObjPickup.isPickUp = true;              //if object is not in the area impact, will not allow to  move 
@@ -44,10 +44,10 @@ public class FoodCookImpact : FoodCookAbs
 
     protected virtual void OnTriggerExit2D(Collider2D other)
     {
-        if (other.transform.parent.GetComponent<FoodCookCtrl>())
+        if (other.transform.parent.GetComponent<FoodCtrl>())
       {
-         var objCtrl = other.transform.parent.GetComponent<FoodCookCtrl>();
-         if (objCtrl.FoodCookPickup.TryGetComponent(out IsPickupAble ObjPickup))
+         var objCtrl = other.transform.parent.GetComponent<FoodCtrl>();
+         if (objCtrl.FoodPickup.TryGetComponent(out IsPickupAble ObjPickup))
          {
 
          }
