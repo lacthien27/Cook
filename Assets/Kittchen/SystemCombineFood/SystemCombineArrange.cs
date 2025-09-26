@@ -16,19 +16,18 @@ public class SystemCombineArrange : SystemCombineFoodAbs
          listDish.Add(obj);
          UpdatePositions();
 
-
-
      }
+
 
      // Hàm xóa object ra khỏi hàng
-     public void RemoveObject(Transform obj)
-     {
-         if (listDish.Contains(obj))
-         {
-             listDish.Remove(obj);
-             UpdatePositions();
-         }
-     }
+    public void RemoveObject(Transform obj)
+    {
+        if (listDish.Contains(obj))
+        {
+            listDish.Remove(obj);
+            UpdatePositions();
+        }
+    }
 
     // Sắp xếp lại vị trí toàn bộ object dựa theo index
     public void UpdatePositions()
@@ -39,7 +38,10 @@ public class SystemCombineArrange : SystemCombineFoodAbs
             listDish[i].position = targetPos;
 
         }
-        this.systemCombineFoodCtrl.SystemCombineFood.GetListFoodData();
+
+       // if (listDish.Contains(obj) == "f") return;
+        this.systemCombineFoodCtrl.SystemCombineFood.GetListFoodData(); 
+        
  
      }
 

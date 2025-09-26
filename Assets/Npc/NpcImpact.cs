@@ -12,10 +12,10 @@ public class NpcImpact : NpcAbs
   protected virtual void OnTriggerEnter2D(Collider2D other)
   {
 
-   if (other.GetComponent<FoodImpact>() != null)
+   if (other.GetComponent<DishImpact>() != null)
     {
-      var foodImpact = other.GetComponent<FoodImpact>();
-      this.NpcCtrl.NpcReceiveFood.CompareFood(foodImpact);//call NpcRecveive handle// có nên đặt ở đây ko ???
+      var dishImpact = other.GetComponent<DishImpact>();
+      this.NpcCtrl.NpcReceiveFood.CompareFood(dishImpact);//call NpcRecveive handle// có nên đặt ở đây ko ???
           
     }
 

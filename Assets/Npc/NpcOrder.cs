@@ -11,7 +11,7 @@ public class NpcOrder : NpcAbs
 
   [SerializeField] protected int loopCount = 1; // số lần lặp để lấy thức ăn
 
-  [SerializeField] public FoodData foodData;// nơi lấy data để so sánh
+  //[SerializeField] public FoodData foodData;// nơi lấy data để so sánh
 
   [SerializeField] public List<FoodData> foodOrders = new List<FoodData>();
 
@@ -20,24 +20,23 @@ public class NpcOrder : NpcAbs
 
   protected override void OnEnable()
   {
-    StateOrder.OnComplete_Order += GetAmountFoodToOrder;
+    StateOrder.OnStart_Order += GetAmountFoodToOrder;
   }
 
 
   public virtual void GetAmountFoodToOrder()
   {
-    this.loopCount = UnityEngine.Random.Range(1, 10);
+    this.loopCount = UnityEngine.Random.Range(1, 3);
 
     for (int i = 0; i < this.loopCount; i++)
     {
       var foodCtrl = GameCtrl.Instance.SpawnerFoodOrder.SpanwFood();
       var foodOrderCtrl = foodCtrl.GetComponent<FoodOrderCtrl>();
-      this.foodData = foodOrderCtrl.FoodOrderPro.FoodData;
-
+   //   this.foodData = foodOrderCtrl.FoodOrderPro.FoodData;
+      var foodData = foodOrderCtrl.FoodOrderPro.FoodData;
 
       if (!foodDataToObjects.ContainsKey(foodData))
         foodDataToObjects[foodData] = new List<Transform>();
-
 
       foodDataToObjects[foodData].Add(foodCtrl);
       this.foodOrders.Add(foodData);
@@ -46,7 +45,7 @@ public class NpcOrder : NpcAbs
   }
   protected override void OnDisable()
   {
-    StateOrder.OnComplete_Order -= GetAmountFoodToOrder;
+    StateOrder.OnStart_Order -= GetAmountFoodToOrder;
   }
   
 }

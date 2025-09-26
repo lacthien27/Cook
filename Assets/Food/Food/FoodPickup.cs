@@ -5,6 +5,7 @@ using UnityEngine;
 public class FoodPickup : FoodAbs, IsPickupAble
 {
     
+
     [SerializeField]     public  bool isAreaMouse { get; set; }   // is in zone impact off  mouse
 
     [SerializeField]    public bool isPickUp{ get; set; }  //  picked up  will do not allow to move object otherwise

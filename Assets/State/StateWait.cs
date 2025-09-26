@@ -16,12 +16,12 @@ public class StateWait : StateAbs
     protected virtual void ExecuteLogic()
     {
         this.timer += Time.deltaTime;
-        if (timer <4f)  //dưới 4 giây và phải has enough food
+        if (timer <1000f && this.stateMachineCtrl.NpcCtrl.NpcReceiveFood.CorrectOrder)  //dưới 4 giây và phải has enough food
         {
         this.stateMachineCtrl.ChangeState(this.stateMachineCtrl.StatePayed);
         this.timer = 0; // reset timer after changing state
         }
-        else
+        else if(timer>1000f)
         {
             this.timer = 0; // reset timer after changing state
             this.stateMachineCtrl.ChangeState(this.stateMachineCtrl.StateAngry);

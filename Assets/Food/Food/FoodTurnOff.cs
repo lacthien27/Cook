@@ -16,6 +16,7 @@ public class FoodTurnOff : FoodAbs
     {
         if (this.isInSysTemCombineFoodArea == false) return; // only turn off when  in combine area
         GameCtrl.Instance.SpawnerIngredient.Despawn(transform.parent);
+
         this.isInSysTemCombineFoodArea = false; // reset trạng thái sau khi despawn
     }
 

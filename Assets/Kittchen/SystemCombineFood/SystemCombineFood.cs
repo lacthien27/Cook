@@ -18,12 +18,14 @@ public class SystemCombineFood : SystemCombineFoodAbs
   public void GetListFoodData() // get Data from Transform list in SystemArrange
     {
       currentFoods.Clear(); // Xóa list cũ trước khi build lại
-      foreach (var obj in this.SystemCombineFoodCtrl.SystemCombineArrange.listDish)
-      {
-        var foodCtrl = obj.GetComponent<FoodCtrl>();
-        FoodData foodData = foodCtrl.FoodPro.FoodData;
-        currentFoods.Add(foodData);
-      }
+    foreach (var obj in this.SystemCombineFoodCtrl.SystemCombineArrange.listDish)
+    {
+
+      if (obj.transform.GetComponent<DishCtrl>() != null) return;  // place in here will ko add dish in list CurrentFood , 
+      var foodCtrl = obj.GetComponent<FoodCtrl>();
+      FoodData foodData = foodCtrl.FoodPro.FoodData;
+      currentFoods.Add(foodData);
+    }
       this.CheckRecipe();
 
     }
@@ -37,7 +39,6 @@ public class SystemCombineFood : SystemCombineFoodAbs
       {
         if (MatchRecipe(recipe))
         {
-          Debug.LogWarning(this.SystemCombineFoodCtrl.SystemCombineDirectory.GetTransformformDirectory(recipe.ResultDish));
 
         Transform DishData = this.SystemCombineFoodCtrl.SystemCombineDirectory.GetTransformformDirectory(recipe.ResultDish);
         //   GameCtrl.Instance.SpawnerFoodForCook.SpawnDish(DishData,transform.parent.position);

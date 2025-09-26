@@ -7,18 +7,25 @@ using System;
 
 public class NpcReceiveFood : NpcAbs
 {
+  [SerializeField] public bool CorrectOrder; //use cho các transform belong npc 
 
-  public virtual void CompareFood(FoodImpact FoodImpact)
+  public virtual void CompareFood(DishImpact dishImpact)
   {
-    var foodPro = FoodImpact.FoodCtrl.FoodPro;
-    if (!this.npcCtrl.NpcOrder.foodDataToObjects.ContainsKey(foodPro.FoodData)) return;//check foodCookpro.FoodData belong to foodDataToObjects, nếu ko có thì return
-    FoodImpact.foodAsOrderd = true;   //condition to turn off FoodCookTurnOff
-    List<Transform> list = this.npcCtrl.NpcOrder.foodDataToObjects[foodPro.FoodData];// list objects that have the same foodData of npcCtrl.NpcOrder
-    foreach (Transform foodTransform in list)
+    var dishPro = dishImpact.DishCtrl.DishPro;
+    if (!this.npcCtrl.NpcOrder.foodDataToObjects.ContainsKey(dishPro.FoodData)) return;//check foodCookpro.FoodData belong to foodDataToObjects, nếu ko có thì return
+    dishImpact.foodAsOrderd = true;   //condition to turn off FoodCookTurnOff
+    List<Transform> list = this.npcCtrl.NpcOrder.foodDataToObjects[dishPro.FoodData];// list objects that have the same foodData of npcCtrl.NpcOrder
+    foreach (Transform dishTransform in list)
     {
-      if (foodTransform.transform.name != foodPro.transform.parent.name) return;// so sánh name of foodOrer vs foodCoook
-      var foodOrderTurnOff = foodTransform.GetComponentInChildren<FoodOrderTurnOff>();
-      foodOrderTurnOff.isCorrectOrder = true;
+      if (dishTransform.transform.name != dishPro.transform.parent.name) return;// so sánh name of foodOrer vs dish
+
+      var disTurnOff = dishPro.DishCtrl.DishTurnOff;  // turnOff Dish
+      disTurnOff.isCorrectOrder = true;
+
+      var foodOrderTurnOff = dishTransform.GetComponentInChildren<FoodOrderTurnOff>();
+      this.CorrectOrder = true;       // swtich State
+      foodOrderTurnOff.isCorrectOrder = true;   //turnoff FoodOrder
+
       return;
     }
 

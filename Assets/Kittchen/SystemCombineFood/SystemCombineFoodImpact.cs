@@ -12,7 +12,7 @@ public class SystemCombineFoodImpact : SystemCombineFoodAbs
 
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.transform.name == "Impact")
+        if (other.transform.name == "Impact"||other.transform.name=="DishImpact")
         {
             var obj = other.transform.parent;
             this.candidates.Add(obj);
@@ -35,6 +35,23 @@ public class SystemCombineFoodImpact : SystemCombineFoodAbs
                 this.candidates.Remove(obj);
             }
         }
+
+         if (other.transform.name == "DishImpact")
+        {
+            var dish = other.transform.parent;
+            var dishMove = other.transform.parent.GetComponentInChildren<DishMove>();
+            dishMove.isCombinedArea = true;    //  nếu đặt ở enter sẽ bị lỗi 2 systemcombine ko enter cùng lúc -> object sẽ trả lại vị trí ban đầu
+
+           // this.systemCombineFoodCtrl.SystemCombineArrange.UpdatePositions();
+            if (!GameCtrl.Instance.MouseCtrl.MousePos.isDrag && candidates.Contains(dish))
+            {
+                this.SystemCombineFoodCtrl.SystemCombineArrange.AddObject(other.transform.parent);
+                this.candidates.Remove(dish);
+            }
+        }
+
+
+
     }
 
     protected virtual void OnTriggerExit2D(Collider2D other)
@@ -46,6 +63,16 @@ public class SystemCombineFoodImpact : SystemCombineFoodAbs
             cookmove.isCombinedArea = false;
             this.SystemCombineFoodCtrl.SystemCombineArrange.RemoveObject(other.transform.parent);
             candidates.Remove(obj);
+
+        }
+
+        if (other.transform.name == "DishImpact")
+        {
+            var dish = other.transform.parent;
+            var dishMove = other.transform.parent.GetComponentInChildren<DishMove>();
+            dishMove.isCombinedArea = false;
+            this.SystemCombineFoodCtrl.SystemCombineArrange.RemoveObject(other.transform.parent);
+            candidates.Remove(dish);
 
         }
     }

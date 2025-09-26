@@ -59,16 +59,17 @@ public class KittchenImpact : KittchenAbs
         {
         if (other.transform.name == "Impact")
         {
+            Debug.LogWarning("f");
             var obj = other.transform.parent;
             var foodmove = other.transform.parent.GetComponentInChildren<FoodMove>();
             foodmove.isCombinedArea = false;
             this.kittchenCtrl.KittchenArrange.RemoveObject(obj);
             this.candidates.Remove(obj);
-             var objCtrl = obj.GetComponent<FoodCtrl>();
+            var objCtrl = obj.GetComponent<FoodCtrl>();
             var ObjTimer = objCtrl.FoodTimer;
             ObjTimer.StopCooking();
-            
-            
+
+
 
         }
         }

@@ -51,8 +51,6 @@ public class StateMachineCtrl : NpcAbs
         Debug.LogWarning(transform.name +" : Load StateOrder ",gameObject);
     }
 
-
-
       protected virtual void LoadStatePayed()
     {
         if (this.statePayed != null) return;
@@ -82,7 +80,7 @@ public class StateMachineCtrl : NpcAbs
     }
     
 
-    protected virtual void LoadState()
+    protected virtual void LoadState() // 
     {
         if (this.currentState != null) return;
     }
@@ -112,7 +110,7 @@ public class StateMachineCtrl : NpcAbs
         }
         currentState = newState;
         currentState.OnStateEnter(this);
-//        Debug.LogWarning(currentState);
+//       Debug.LogWarning(currentState);
                       
 
        

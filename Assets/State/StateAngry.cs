@@ -14,7 +14,7 @@ public class StateAngry : StateAbs
     protected virtual void ExecuteLogic()
     {
         this.timer += Time.deltaTime;
-        if (timer < 4f)  //dưới 4 giây và phải has enough food
+        if (timer < 1000f)  //dưới 4 giây và phải has enough food
         {
             this.stateMachineCtrl.ChangeState(this.stateMachineCtrl.StatePayed);
 

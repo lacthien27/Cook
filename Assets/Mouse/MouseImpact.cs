@@ -12,7 +12,7 @@ public class MouseImpact : MouseAbs
 
    private void OnTriggerEnter2D(Collider2D other)
    {
-          if (hasPicked) return; // đã pick 1 object rồi thì bỏ qua
+      if (hasPicked) return; // đã pick 1 object rồi thì bỏ qua
 
       if (other.transform.parent.GetComponent<FoodCtrl>())
       {
@@ -21,24 +21,47 @@ public class MouseImpact : MouseAbs
          {
             ObjPickup.isAreaMouse = true;
             hasPicked = true; // gắn cờ
-
-
          }
       }
+      
+      if (other.transform.parent.GetComponent<DishCtrl>())
+      {
+         var dishCtrl = other.transform.parent.GetComponent<DishCtrl>();
+         if (dishCtrl.DishPickUp.TryGetComponent(out IsPickupAble ObjPickup))
+         {
+            ObjPickup.isAreaMouse = true;
+            hasPicked = true; // gắn cờ
+         }
+      }
+
+
+
    }
 
    private void OnTriggerExit2D(Collider2D other)
    {
-        if (other.transform.parent.GetComponent<FoodCtrl>())
-        {
-           var objCtrl = other.transform.parent.GetComponent<FoodCtrl>();
+      if (other.transform.parent.GetComponent<FoodCtrl>())
+      {
+         var objCtrl = other.transform.parent.GetComponent<FoodCtrl>();
          if (objCtrl.FoodPickup.TryGetComponent(out IsPickupAble ObjPickup))
          {
             ObjPickup.isAreaMouse = false;
-                          hasPicked = false; // gắn cờ
+            hasPicked = false; // gắn cờ
 
-           }
-        }
+         }
+      }
+        
+      if (other.transform.parent.GetComponent<DishCtrl>())
+      {
+         var dishCtrl = other.transform.parent.GetComponent<DishCtrl>();
+         if (dishCtrl.DishPickUp.TryGetComponent(out IsPickupAble ObjPickup))
+         {
+            ObjPickup.isAreaMouse = false;
+            hasPicked = false; // gắn cờ
+
+         }
+      }
+
       
       
    }
