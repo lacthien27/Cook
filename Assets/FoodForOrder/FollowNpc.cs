@@ -11,20 +11,22 @@ public class FollowNpc : FoodOrderAbs
     [SerializeField] public Transform Npctarget;
     protected override void OnEnable()
     {
-        SpawnerFoodOrder.OnSpawnedFoodOrder += FollowTarget;
+      //  SpawnerFoodOrder.OnSpawnedFoodOrder += FollowTarget;
     }
 
 
-    protected virtual void FollowTarget()
+    public virtual void FollowTarget(Transform NpcTarget)
     {
-        this.Npctarget = GameCtrl.Instance.SpawnerNpc.NpcCurrent;
+       /** this.Npctarget = GameCtrl.Instance.SpawnerNpc.NpcCurrent;
         var npcCtrl = Npctarget.GetComponent<NpcCtrl>();
         var npcOrder = npcCtrl.NpcOrder;
-        transform.parent.position = npcOrder.transform.position;
+        transform.parent.position = npcOrder.transform.position;**/
+        transform.parent.position = NpcTarget.transform.position;
+
     }
     
     protected override void OnDisable()
     {
-        SpawnerFoodOrder.OnSpawnedFoodOrder -= FollowTarget;
+      //  SpawnerFoodOrder.OnSpawnedFoodOrder -= FollowTarget;
     }
 }

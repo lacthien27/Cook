@@ -21,7 +21,7 @@ public class SpawnerNpc : Spawner
     protected void Update()
     {
          this.timer += Time.deltaTime;
-        if (timer < 20f) return;
+        if (timer < 100f) return;
         this.SpawnNpc();
         timer = 0;
     }
