@@ -42,6 +42,10 @@ public class GameCtrl : ThienMonoBehaviour
   public SpawnerSpice SpawnerSpice => spawnerSpice;
 
 
+  [SerializeField] protected ArrangeNpc arrangeNpc;
+  public ArrangeNpc ArrangeNpc => arrangeNpc; 
+
+
 
   protected override void Awake()
   {
@@ -63,12 +67,20 @@ public class GameCtrl : ThienMonoBehaviour
     this.LoadStorageIngredients();
     this.LoadSpawnerDish();
     this.LoadSpawnerSpice();
+    this.LoadArrangeNpc();
     
 
 
   }
 
- protected virtual void LoadSpawnerSpice()
+  protected virtual void LoadArrangeNpc()
+  {
+    if (arrangeNpc != null) return;
+    this.arrangeNpc = GameCtrl.FindObjectOfType<ArrangeNpc>();
+    Debug.Log(transform.name + "Load ArrangeNpc", gameObject);
+  }
+
+  protected virtual void LoadSpawnerSpice()
   {
     if (spawnerSpice != null) return;
     this.spawnerSpice = GameCtrl.FindObjectOfType<SpawnerSpice>();

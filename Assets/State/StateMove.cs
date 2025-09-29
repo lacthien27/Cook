@@ -5,11 +5,11 @@ using System;
 
 public class StateMove : StateAbs
 {
-     [SerializeField] public float timer = 0;
+    [SerializeField] public float timer = 0;
 
-     public static Action OnComplete_Moved;
+    public  Action OnComplete_Moved;
 
-     protected override void OnUpdate()
+    protected override void OnUpdate()
     {
 
         this.ExecuteLogic();
@@ -20,8 +20,22 @@ public class StateMove : StateAbs
         if (timer > 1f)
         {
             this.stateMachineCtrl.ChangeState(this.stateMachineCtrl.StateOrder);
+            var VacantPos = GameCtrl.Instance.ArrangeNpc.GetRandomAvailablePosition();
+            GameCtrl.Instance.ArrangeNpc.AssignNpcToPosition(this.stateMachineCtrl.NpcCtrl.gameObject, VacantPos);
+            this.timer = 0;
             OnComplete_Moved?.Invoke();
         }
-       
+
     }
+
+    protected override void OnExit()
+    {
+        //OnComplete_Moved -= ExecuteLogic;
+    }
+
+    
+
+
+
+    
 }
