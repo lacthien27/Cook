@@ -7,7 +7,7 @@ public class MouseImpact : MouseAbs
 {
 
    [SerializeField] public static FoodImpact currentObject;
-   
+
    [SerializeField] private bool hasPicked = false;// do not drag 1 time 2 object
 
    private void OnTriggerEnter2D(Collider2D other)
@@ -23,7 +23,7 @@ public class MouseImpact : MouseAbs
             hasPicked = true; // gắn cờ
          }
       }
-      
+
       if (other.transform.parent.GetComponent<DishCtrl>())
       {
          var dishCtrl = other.transform.parent.GetComponent<DishCtrl>();
@@ -50,7 +50,7 @@ public class MouseImpact : MouseAbs
 
          }
       }
-        
+
       if (other.transform.parent.GetComponent<DishCtrl>())
       {
          var dishCtrl = other.transform.parent.GetComponent<DishCtrl>();
@@ -62,13 +62,14 @@ public class MouseImpact : MouseAbs
          }
       }
 
-      
-      
+
+
    }
-   
+
+
+  
 
 }
-
 
 
 

@@ -8,7 +8,7 @@ public class StateOrder : StateAbs
 {
     [SerializeField] public float timer = 0;
 
-    public static Action OnStart_Order; // event thông báo cho MinoCtrl
+    public  Action OnStart_Order; // event thông báo cho MinoCtrl
 
     protected override void OnUpdate()
     {

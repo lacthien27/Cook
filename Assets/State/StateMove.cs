@@ -7,7 +7,7 @@ public class StateMove : StateAbs
 {
     [SerializeField] public float timer = 0;
 
-    public  Action OnComplete_Moved;
+   // public  Action OnComplete_Moved;
 
     protected override void OnUpdate()
     {
@@ -23,7 +23,7 @@ public class StateMove : StateAbs
             var VacantPos = GameCtrl.Instance.ArrangeNpc.GetRandomAvailablePosition();
             GameCtrl.Instance.ArrangeNpc.AssignNpcToPosition(this.stateMachineCtrl.NpcCtrl.gameObject, VacantPos);
             this.timer = 0;
-            OnComplete_Moved?.Invoke();
+         //   OnComplete_Moved?.Invoke();
         }
 
     }

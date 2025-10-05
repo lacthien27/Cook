@@ -7,7 +7,7 @@ using UnityEngine.Video;
 public class FoodImpact : FoodAbs
 {
 
-    [SerializeField] public bool foodAsOrderd = false;// let the outside function use
+   // [SerializeField] public bool foodAsOrderd = false;// let the outside function use
 
     [SerializeField] protected Collider2D cl2D;
     public Collider2D Cl2D => cl2D;

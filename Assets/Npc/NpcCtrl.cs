@@ -17,7 +17,8 @@ public class NpcCtrl : GameAbs
     [SerializeField] protected NpcReceiveFood npcReceiveFood;
     public NpcReceiveFood NpcReceiveFood => npcReceiveFood;
 
-
+    [SerializeField] protected StateMachineCtrl stateMachineCtrl;
+    public StateMachineCtrl StateMachineCtrl => stateMachineCtrl;
 
 
     protected override void LoadComponents()
@@ -25,10 +26,19 @@ public class NpcCtrl : GameAbs
         base.LoadComponents();
         this.LoadNpcMove();
         this.LoadNpcOrder();
+                //this.NpcImpact.enabled = true;
+
         this.LoadNpcImpact();
         this.LoadNpcReceiveFood();
+        this.LoadStateMachineCtrl();
     }
 
+    protected virtual void LoadStateMachineCtrl()
+    {
+        if (this.stateMachineCtrl != null) return;
+        this.stateMachineCtrl = GetComponentInChildren<StateMachineCtrl>();
+        Debug.LogWarning(transform.name + " : Load StateMachineCtrl", gameObject);
+    }
 
     protected virtual void LoadNpcOrder()
     {

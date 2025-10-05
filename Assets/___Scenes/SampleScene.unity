@@ -434,7 +434,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodOrderCtrl: {fileID: 248183367}
-  Npctarget: {fileID: 0}
 --- !u!1 &183080194
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,7 +515,6 @@ MonoBehaviour:
   - {fileID: 1599759144}
   - {fileID: 1877266897}
   - {fileID: 301396323}
-  - {fileID: 1810982792}
 --- !u!4 &185037100
 Transform:
   m_ObjectHideFlags: 0
@@ -1089,7 +1087,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 301396322}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4, y: 2, z: 0}
+  m_LocalPosition: {x: 6, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1222,7 +1220,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodCtrl: {fileID: 1687303303}
-  foodAsOrderd: 0
   cl2D: {fileID: 318280131}
   rb2D: {fileID: 318280134}
 --- !u!61 &318280131
@@ -1554,7 +1551,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodCtrl: {fileID: 1050908587}
-  foodAsOrderd: 0
   cl2D: {fileID: 358510559}
   rb2D: {fileID: 358510561}
 --- !u!61 &358510559
@@ -2141,7 +2137,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodOrderCtrl: {fileID: 408530420}
-  Npctarget: {fileID: 0}
 --- !u!1 &510487105
 GameObject:
   m_ObjectHideFlags: 0
@@ -6275,7 +6270,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1599759143}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: -6, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6455,6 +6450,7 @@ MonoBehaviour:
   npcMove: {fileID: 102414159}
   npcImpact: {fileID: 1665057248}
   npcReceiveFood: {fileID: 1974197675}
+  stateMachineCtrl: {fileID: 286487314}
 --- !u!1 &1617588037
 GameObject:
   m_ObjectHideFlags: 0
@@ -6500,7 +6496,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodOrderCtrl: {fileID: 1085197228}
-  Npctarget: {fileID: 0}
 --- !u!1 &1626555094
 GameObject:
   m_ObjectHideFlags: 0
@@ -6710,7 +6705,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodCtrl: {fileID: 552521279}
-  foodAsOrderd: 0
   cl2D: {fileID: 1658414797}
   rb2D: {fileID: 1658414796}
 --- !u!50 &1658414796
@@ -7622,7 +7616,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1810982792
 Transform:
   m_ObjectHideFlags: 0
@@ -7756,7 +7750,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1877266896}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

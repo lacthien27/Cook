@@ -19,7 +19,7 @@ public class NpcOrder : NpcAbs
 
   protected override void OnEnable()
   {
-    StateOrder.OnStart_Order += GetAmountFoodToOrder;
+    this.NpcCtrl.StateMachineCtrl.StateOrder.OnStart_Order += GetAmountFoodToOrder;
   }
 
 
@@ -34,17 +34,18 @@ public class NpcOrder : NpcAbs
       foodOrderCtrl.FollowNpc.FollowTarget(transform);  // gọi hàm theo dõi npc
       var foodData = foodOrderCtrl.FoodOrderPro.FoodData;
 
-      if (!foodDataToObjects.ContainsKey(foodData))
-       foodDataToObjects[foodData] = new List<Transform>();// create new list if key does not exist ,has not will throw error
+     if (!foodDataToObjects.ContainsKey(foodData))
+       foodDataToObjects[foodData] = new List<Transform>();
+     foodDataToObjects[foodData].Add(foodCtrl);
 
-      foodDataToObjects[foodData].Add(foodCtrl); 
-      this.foodOrders.Add(foodData);     // ko liên quan đến logic 
-    }
+     this.foodOrders.Add(foodData);     // ko liên quan đến logic
+     }
+     
 
   }
   protected override void OnDisable()
   {
-    StateOrder.OnStart_Order -= GetAmountFoodToOrder;
+   this.NpcCtrl.StateMachineCtrl.StateOrder.OnStart_Order -= GetAmountFoodToOrder;
   }
   
 }
