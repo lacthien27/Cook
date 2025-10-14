@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c01688d7dbeadd4d9223fccf52f65a8, type: 3}
-  m_Name: Broken_Rice
+  m_Name: chicken_Rice
   m_EditorClassIdentifier: 
   timeCook: 0
   timeBurned: 0
-  money: 10
-  FoodType: 4
+  money: 15
+  FoodType: 5
   stateFood: 1

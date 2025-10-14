@@ -6,7 +6,7 @@ using UnityEngine;
 public class FoodData : ScriptableObject
 {
 
-    public Sprite icon;
+  //  public Sprite icon;
     public float timeCook;
 
     public float timeBurned;
@@ -31,6 +31,8 @@ public enum FoodType
     Vegetable,
 
     Broken_Rice,
+
+    Chiken_Rice,
 
     // thêm các loại khác tùy mày
 }

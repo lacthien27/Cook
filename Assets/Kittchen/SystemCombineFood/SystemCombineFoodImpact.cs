@@ -39,7 +39,7 @@ public class SystemCombineFoodImpact : SystemCombineFoodAbs
         {
             var dish = other.transform.parent;
             var dishMove = other.transform.parent.GetComponentInChildren<DishMove>();
-            dishMove.isCombinedArea = true;    //  nếu đặt ở enter sẽ bị lỗi 2 systemcombine ko enter cùng lúc -> object sẽ trả lại vị trí ban đầu
+              dishMove.isCombinedArea = true;    //  nếu đặt ở enter sẽ bị lỗi 2 systemcombine ko enter cùng lúc -> object sẽ trả lại vị trí ban đầu
 
            // this.systemCombineFoodCtrl.SystemCombineArrange.UpdatePositions();
             if (!GameCtrl.Instance.MouseCtrl.MousePos.isDrag && candidates.Contains(dish))

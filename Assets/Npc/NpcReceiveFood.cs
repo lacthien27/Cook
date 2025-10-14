@@ -12,26 +12,31 @@ public class NpcReceiveFood : NpcAbs
   [SerializeField] public bool CorrectOrder; //use cho các transform belong npc 
 
 
-
-
-
   public virtual void CompareFood(DishImpact dishImpact)
   {
     var dishPro = dishImpact.DishCtrl.DishPro;
     if (this.npcCtrl.NpcOrder.foodDataToObjects.TryGetValue(dishPro.FoodData, out var list)) // check foodCookpro.FoodData belong to foodDataToObjects, nếu ko có thì return
     {
-
       foreach (Transform dishTransform in list) // duyệt qua list order của npc
       {
-        if (dishTransform.transform.name != dishPro.transform.parent.name) continue;// so sánh name of foodOrer vs dish
-        this.TurnOffDish(dishPro); // turn off FoodCookTurnOff
-        this.TurnOffFoodOrder(dishTransform);  // turn off FoodOrderTurnOff
+        if (dishTransform.transform.name == dishPro.transform.parent.name)
+        {
+          this.TurnOffDish(dishPro); // turn off FoodCookTurnOff
+          this.TurnOffFoodOrder(dishTransform);  // turn off FoodOrderTurnOff
 
-        this.npcCtrl.NpcOrder.foodOrders.Remove(dishPro.FoodData); // not influence to logic, only use to count amount of foodOrder
-        this.npcCtrl.NpcOrder.foodDataToObjects.Remove(dishPro.FoodData);   // remove the key-value pair from the dictionary
-
-
+          this.npcCtrl.NpcOrder.foodOrders.Remove(dishPro.FoodData); // not influence to logic, only use to count amount of foodOrder
+          this.npcCtrl.NpcOrder.foodDataToObjects.Remove(dishPro.FoodData);
+          return;
+        }
       }
+    }
+    else
+    {
+      Debug.LogWarning("Wrong Order");
+      var dishmove = dishImpact.DishCtrl.DishMove.GetComponent<DishMove>() ;
+     dishmove.isCombinedArea = false;  
+      dishmove.ReturnToStartPos(); // dish move về vị trí ban đầu
+      return;
     }
   }
 
