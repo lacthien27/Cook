@@ -14,7 +14,7 @@ public class NpcOrder : NpcAbs
 
   [SerializeField] public List<FoodData> foodOrders = new List<FoodData>(); // ko liên quan đến logic , chỉ dùng để qui ước số lượng món ăn
 
-   [SerializeField] public Dictionary<FoodData, List<Transform>> foodDataToObjects = new Dictionary<FoodData, List<Transform>>();
+   [SerializeField] public Dictionary<FoodData, List<Transform>> foodDataToObjects = new Dictionary<FoodData, List<Transform>>();// dùng để lưu trữ món ăn và đối tượng tương ứng
 
 
   protected override void OnEnable()
@@ -25,9 +25,10 @@ public class NpcOrder : NpcAbs
 
   public virtual void GetAmountFoodToOrder()
   {
-    this.loopCount = UnityEngine.Random.Range(1, 2);
+    this.loopCount = UnityEngine.Random.Range(0, 2);
+    Debug.LogWarning(this.loopCount);
 
-    for (int i = 0; i < this.loopCount; i++)
+    for (int i = 0; i <= this.loopCount; i++)
     {
       var foodCtrl = GameCtrl.Instance.SpawnerFoodOrder.SpanwFood();
       var foodOrderCtrl = foodCtrl.GetComponent<FoodOrderCtrl>();
