@@ -9,15 +9,15 @@ using System;
 
 public class SystemCombineFood : SystemCombineFoodAbs
 {
-    [SerializeField]   public List<RecipeSO> recipes;   // list of recipes for mixing
-  [SerializeField]  public List<FoodData> currentFoods = new List<FoodData>();  // list of current foods for mixing
+  [SerializeField] public List<RecipeSO> recipes;   // list of recipes for mixing
+  [SerializeField] public List<FoodData> currentFoods = new List<FoodData>();  // list of current foods for mixing
 
-      public static event Action OnEnoughFoodToDish;
+  public static event Action OnEnoughFoodToDish;
 
 
   public void GetListFoodData() // get Data from Transform list in SystemArrange
-    {
-      currentFoods.Clear(); // Xóa list cũ trước khi build lại
+  {
+    currentFoods.Clear(); // Xóa list cũ trước khi build lại
     foreach (var obj in this.SystemCombineFoodCtrl.SystemCombineArrange.listDish)
     {
 
@@ -26,34 +26,34 @@ public class SystemCombineFood : SystemCombineFoodAbs
       FoodData foodData = foodCtrl.FoodPro.FoodData;
       currentFoods.Add(foodData);
     }
-      this.CheckRecipe();
+    this.CheckRecipe();
 
-    }
+  }
 
-    
-  
 
-    void CheckRecipe()
+
+
+  void CheckRecipe()
+  {
+    foreach (var recipe in recipes)
     {
-      foreach (var recipe in recipes)
+      if (MatchRecipe(recipe))
       {
-        if (MatchRecipe(recipe))
-        {
 
         Transform DishData = this.SystemCombineFoodCtrl.SystemCombineDirectory.GetTransformformDirectory(recipe.ResultDish);
         //   GameCtrl.Instance.SpawnerFoodForCook.SpawnDish(DishData,transform.parent.position);
-        GameCtrl.Instance.SpawnerDish.SpawnDish(DishData,transform.parent.position);
+        GameCtrl.Instance.SpawnerDish.SpawnDish(DishData, transform.parent.position);
         this.OnlyGetObjBelongOWner(); // only set true for object belong to this SystemCombineFood
         OnEnoughFoodToDish?.Invoke(); // gọi event (nếu có người lắng nghe)
 
         ClearIngredients();  // leave it at last
-          break;
-        }
+        break;
       }
     }
+  }
 
-    bool MatchRecipe(RecipeSO recipe)
-{
+  bool MatchRecipe(RecipeSO recipe)
+  {
     var need = recipe.inputFoods
         .GroupBy(x => x.FoodType)
         .ToDictionary(g => g.Key, g => g.Count());
@@ -66,22 +66,21 @@ public class SystemCombineFood : SystemCombineFoodAbs
 
     foreach (var kv in need)
     {
-        if (!have.TryGetValue(kv.Key, out var count) || count != kv.Value)
-            return false;
+      if (!have.TryGetValue(kv.Key, out var count) || count != kv.Value)
+        return false;
     }
 
     return true;
-}
+  }
 
 
   void ClearIngredients()
   {
 
     this.SystemCombineFoodCtrl.SystemCombineArrange.listDish.Clear(); //list Transform
-    currentFoods.Clear();  
+    currentFoods.Clear();
 
-
-    }
+  }
 
 
   protected virtual void OnlyGetObjBelongOWner()  //  chỉ lấy các object thuộc cùng 1 SystemCombineFood 
@@ -91,6 +90,6 @@ public class SystemCombineFood : SystemCombineFoodAbs
       var objCtrl = obj.GetComponent<FoodCtrl>();
       objCtrl.FoodTurnOff.isInSysTemCombineFoodArea = true; // set true cho các object trong vùng va chạm
     }
-  } 
+  }
 
 }

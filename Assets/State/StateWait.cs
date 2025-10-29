@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq.Expressions;
 
 public class StateWait : StateAbs
 {
@@ -16,10 +17,11 @@ public class StateWait : StateAbs
     protected virtual void ExecuteLogic()
     {
         this.timer += Time.deltaTime;
-        if (timer <1000f && this.stateMachineCtrl.NpcCtrl.NpcReceiveFood.CorrectOrder)  //dưới 4 giây và phải has enough food
+        if (timer <1000f && this.stateMachineCtrl.NpcCtrl.NpcCheckOrders.isReceiveAllOrders)  //dưới 4 giây và phải has enough food
         {
-        this.stateMachineCtrl.ChangeState(this.stateMachineCtrl.StatePayed);
-        this.timer = 0; // reset timer after changing state
+            this.stateMachineCtrl.ChangeState(this.stateMachineCtrl.StatePayed);
+            this.timer = 0; // reset timer after changing state
+        Debug.LogWarning("Change to StatePayed");
         }
         else if(timer>1000f)
         {

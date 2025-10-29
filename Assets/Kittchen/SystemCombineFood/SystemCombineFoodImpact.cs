@@ -6,22 +6,16 @@ public class SystemCombineFoodImpact : SystemCombineFoodAbs
 {
 
     private HashSet<Transform> candidates = new HashSet<Transform>(); // lưu trữ các đối tượng đang trong vùng ảnh hưởng
-
-
-
-
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (other.transform.name == "Impact" || other.transform.name == "DishImpact")
         {
             var obj = other.transform.parent;
             this.candidates.Add(obj);
-
         }
     }
     protected virtual void OnTriggerStay2D(Collider2D other)
     {
-
         if (other.transform.name == "Impact")
         {
             var obj = other.transform.parent;
@@ -34,7 +28,6 @@ public class SystemCombineFoodImpact : SystemCombineFoodAbs
                 this.candidates.Remove(obj);
             }
         }
-
          if (other.transform.name == "DishImpact")
         {
             var dish = other.transform.parent;
@@ -48,11 +41,7 @@ public class SystemCombineFoodImpact : SystemCombineFoodAbs
                 this.candidates.Remove(dish);
             }
         }
-
-
-
     }
-
     protected virtual void OnTriggerExit2D(Collider2D other)
     {
         if (other.transform.name == "Impact")
@@ -62,9 +51,7 @@ public class SystemCombineFoodImpact : SystemCombineFoodAbs
             cookmove.isCombinedArea = false;
             this.SystemCombineFoodCtrl.SystemCombineArrange.RemoveObject(other.transform.parent);
             candidates.Remove(obj);
-
         }
-
         if (other.transform.name == "DishImpact")
         {
             var dish = other.transform.parent;
@@ -76,11 +63,6 @@ public class SystemCombineFoodImpact : SystemCombineFoodAbs
         }
     }
 
-    
-    
-
-
- 
 }
 
 

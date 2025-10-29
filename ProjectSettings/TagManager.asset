@@ -38,6 +38,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BackGround
+    uniqueID: 2879226949
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: FoodCook
+    uniqueID: 271551157
+    locked: 0
+  - name: Effect
+    uniqueID: 2699110465
     locked: 0

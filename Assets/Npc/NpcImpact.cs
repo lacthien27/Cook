@@ -9,10 +9,12 @@ using System;
 public class NpcImpact : NpcAbs
 {
  
+
   private HashSet<Transform> candidates = new HashSet<Transform>(); // lưu trữ các đối tượng đang trong vùng ảnh hưởng
 
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
+  
         if (other.transform.name == "DishImpact")
         {
             var dish = other.transform.parent;
@@ -49,11 +51,12 @@ public class NpcImpact : NpcAbs
         if (other.transform.name == "DishImpact")
         {
             var dish = other.transform.parent;
-           var dishmove = other.transform.parent.GetComponentInChildren<DishMove>();
-           dishmove.isCombinedArea = false;  
+            var dishmove = other.transform.parent.GetComponentInChildren<DishMove>();
+            dishmove.isCombinedArea = false;
             candidates.Remove(dish);
 
         }
+
     }
 
 

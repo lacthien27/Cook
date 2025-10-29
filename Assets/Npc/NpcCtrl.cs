@@ -20,18 +20,28 @@ public class NpcCtrl : GameAbs
     [SerializeField] protected StateMachineCtrl stateMachineCtrl;
     public StateMachineCtrl StateMachineCtrl => stateMachineCtrl;
 
+    [SerializeField] protected NpcCheckOrders npcCheckOrders;
+    public NpcCheckOrders NpcCheckOrders => npcCheckOrders;
+
 
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadNpcMove();
         this.LoadNpcOrder();
-                //this.NpcImpact.enabled = true;
-
         this.LoadNpcImpact();
         this.LoadNpcReceiveFood();
         this.LoadStateMachineCtrl();
+        this.LoadNpcCheckOrders();
     }
+   
+    protected virtual void  LoadNpcCheckOrders()
+    {
+        if (this.npcCheckOrders != null) return;
+        this.npcCheckOrders = GetComponentInChildren<NpcCheckOrders>();
+        Debug.LogWarning(transform.name + " : Load NpcCheckOrders", gameObject);
+    }
+
 
     protected virtual void LoadStateMachineCtrl()
     {

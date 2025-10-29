@@ -39,7 +39,6 @@ public class SystemCombineArrange : SystemCombineFoodAbs
 
         }
 
-       // if (listDish.Contains(obj) == "f") return;
         this.systemCombineFoodCtrl.SystemCombineFood.GetListFoodData(); 
         
  

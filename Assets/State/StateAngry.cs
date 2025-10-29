@@ -17,12 +17,13 @@ public class StateAngry : StateAbs
         if (timer < 1000f)  //dưới 4 giây và phải has enough food
         {
             this.stateMachineCtrl.ChangeState(this.stateMachineCtrl.StatePayed);
+            Debug.LogWarning("Change to StatePayed from Angry");
 
         }
         else
         {
             this.stateMachineCtrl.ChangeState(this.stateMachineCtrl.StateLeave);
-            Debug.Log("StateAngry: Change to StateLeave");
+            Debug.Log("leave because angry");
         }   
 
     }
