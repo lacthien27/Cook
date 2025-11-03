@@ -20,7 +20,7 @@ public class SystemCombineFoodImpact : SystemCombineFoodAbs
         {
             var obj = other.transform.parent;
             var cookmove = other.transform.parent.GetComponentInChildren<FoodMove>();
-            cookmove.isCombinedArea = true;    //  nếu đặt ở enter sẽ bị lỗi 2 systemcombine ko enter cùng lúc -> object sẽ trả lại vị trí ban đầu
+            cookmove.isPlaced = true;    //  nếu đặt ở enter sẽ bị lỗi 2 systemcombine ko enter cùng lúc -> object sẽ trả lại vị trí ban đầu
             this.systemCombineFoodCtrl.SystemCombineArrange.UpdatePositions();
             if (!GameCtrl.Instance.MouseCtrl.MousePos.isDrag && candidates.Contains(obj))
             {
@@ -32,7 +32,7 @@ public class SystemCombineFoodImpact : SystemCombineFoodAbs
         {
             var dish = other.transform.parent;
             var dishMove = other.transform.parent.GetComponentInChildren<DishMove>();
-              dishMove.isCombinedArea = true;    //  nếu đặt ở enter sẽ bị lỗi 2 systemcombine ko enter cùng lúc -> object sẽ trả lại vị trí ban đầu
+              dishMove.isPlaced = true;    //  nếu đặt ở enter sẽ bị lỗi 2 systemcombine ko enter cùng lúc -> object sẽ trả lại vị trí ban đầu
 
            // this.systemCombineFoodCtrl.SystemCombineArrange.UpdatePositions();
             if (!GameCtrl.Instance.MouseCtrl.MousePos.isDrag && candidates.Contains(dish))
@@ -48,7 +48,7 @@ public class SystemCombineFoodImpact : SystemCombineFoodAbs
         {
             var obj = other.transform.parent;
             var cookmove = other.transform.parent.GetComponentInChildren<FoodMove>();
-            cookmove.isCombinedArea = false;
+            cookmove.isPlaced = false;
             this.SystemCombineFoodCtrl.SystemCombineArrange.RemoveObject(other.transform.parent);
             candidates.Remove(obj);
         }
@@ -56,7 +56,7 @@ public class SystemCombineFoodImpact : SystemCombineFoodAbs
         {
             var dish = other.transform.parent;
             var dishMove = other.transform.parent.GetComponentInChildren<DishMove>();
-            dishMove.isCombinedArea = false;
+            dishMove.isPlaced = false;
             this.SystemCombineFoodCtrl.SystemCombineArrange.RemoveObject(other.transform.parent);
             candidates.Remove(dish);
 

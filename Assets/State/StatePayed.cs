@@ -17,7 +17,7 @@ public class StatePayed : StateAbs
     protected virtual void ExecuteLogic()
     {
         OnComplete_Payed?.Invoke();
-        Debug.LogWarning(" Payed Complete ");
+     //   Debug.LogWarning(" Payed Complete ");
         this.stateMachineCtrl.ChangeState(this.stateMachineCtrl.StateLeave);
     }
     

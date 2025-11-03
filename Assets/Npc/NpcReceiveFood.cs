@@ -24,7 +24,7 @@ public class NpcReceiveFood : NpcAbs
         Transform dishTransform = list[i];
         if (dishTransform.transform.name != dishPro.transform.parent.name) continue;  // nếu tên ko đúng thì tiếp tục vòng lặp
           this.TurnOffDish(dishPro); // turn off FoodCookTurnOff
-          this.TurnOffFoodOrder(dishTransform);  // turn off FoodOrderTurnOff
+        this.TurnOffFoodOrder(dishTransform);  // turn off FoodOrderTurnOff
           list.RemoveAt(i);
           if (list.Count != 0) continue;
           this.npcCtrl.NpcOrder.foodDataToObjects.Remove(dishPro.FoodData);
@@ -36,7 +36,7 @@ public class NpcReceiveFood : NpcAbs
     {
       Debug.LogWarning("Wrong Order");
       var dishmove = dishImpact.DishCtrl.DishMove.GetComponent<DishMove>();
-      dishmove.isCombinedArea = false;
+      dishmove.isPlaced = false;
       dishmove.ReturnToStartPos(); // dish move về vị trí ban đầu
       return;
     }
@@ -47,6 +47,7 @@ public class NpcReceiveFood : NpcAbs
   {
     var disTurnOff = dishPro.DishCtrl.DishTurnOff;  // turnOff Dish
     disTurnOff.isCorrectOrder = true;
+    Debug.LogWarning("Turn Off Dish Called");
   }
 
 
@@ -91,7 +92,7 @@ public class NpcReceiveFood : NpcAbs
     {
       Debug.LogWarning("Wrong Order");
       var dishmove = dishImpact.DishCtrl.DishMove.GetComponent<DishMove>();
-      dishmove.isCombinedArea = false;
+      dishmove.isPlaced = false;
       dishmove.ReturnToStartPos(); // dish move về vị trí ban đầu
       return;
     }

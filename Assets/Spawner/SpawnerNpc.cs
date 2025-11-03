@@ -30,7 +30,7 @@ public class SpawnerNpc : Spawner
 
     protected virtual void SpawnNpc()
     {
-        this.NpcCurrent = this.Spawn(this.RandomPrefab(), new Vector3(-6, 2, 0), Quaternion.identity);
+        this.NpcCurrent = this.Spawn(this.RandomPrefab(), new Vector3(-6, 10, 0), Quaternion.identity); 
         this.NpcCurrent.gameObject.SetActive(true);
         OnSpawnNpc?.Invoke(); // gọi sự kiện khi NPC được spawn
     }

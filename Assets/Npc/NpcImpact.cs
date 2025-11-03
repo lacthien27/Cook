@@ -8,11 +8,10 @@ using System;
 
 public class NpcImpact : NpcAbs
 {
- 
 
-  private HashSet<Transform> candidates = new HashSet<Transform>(); // lưu trữ các đối tượng đang trong vùng ảnh hưởng
 
-    protected virtual void OnTriggerEnter2D(Collider2D other)
+    private HashSet<Transform> candidates = new HashSet<Transform>(); // lưu trữ các đối tượng đang trong vùng ảnh hưởng
+     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
   
         if (other.transform.name == "DishImpact")
@@ -23,6 +22,8 @@ public class NpcImpact : NpcAbs
 
         }
     }
+   
+   
     protected virtual void OnTriggerStay2D(Collider2D other)
     {
 
@@ -33,12 +34,11 @@ public class NpcImpact : NpcAbs
             var dishImpact = other.GetComponent<DishImpact>();
 
              var dishmove = other.transform.parent.GetComponentInChildren<DishMove>();
-           dishmove.isCombinedArea = true;       // ko có sẽ lỗi khi kéo thả dish vào npc, dish sẽ bị rơi ra ngoài
-
+            dishmove.isPlaced = true;       // ko có sẽ lỗi khi kéo thả dish vào npc, dish sẽ bị rơi ra ngoài
              
             if (!GameCtrl.Instance.MouseCtrl.MousePos.isDrag && candidates.Contains(dish))
             {
-            this.NpcCtrl.NpcReceiveFood.CompareFood(dishImpact);
+                this.NpcCtrl.NpcReceiveFood.CompareFood(dishImpact);
             this.candidates.Remove(dish);
             }
           }
@@ -52,7 +52,7 @@ public class NpcImpact : NpcAbs
         {
             var dish = other.transform.parent;
             var dishmove = other.transform.parent.GetComponentInChildren<DishMove>();
-            dishmove.isCombinedArea = false;
+            dishmove.isPlaced = false;
             candidates.Remove(dish);
 
         }

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class FoodTimer : FoodAbs
 {
-     public float cookTime = 5f;     // thời gian để nấu chín
-    public float burnTime = 8f;     // thời gian để cháy (sau khi chín)
+     public float cookTime = 0f;     // thời gian để nấu chín
+    public float burnTime = 0f;     // thời gian để cháy (sau khi chín)
 
     private bool isOnBarGrill = false; 
 
@@ -45,7 +45,6 @@ public class FoodTimer : FoodAbs
             }
         }
         
-
 
     }
 

@@ -2,12 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DishMove : DishAbs
+public class DishMove : MoveObjAbs
 {
    
-   public Vector3 startPos;
+   [SerializeField] protected DishCtrl dishCtrl;
 
-   public bool isCombinedArea = false;  //đúng vị trí thì thoy ko quay về chỗ cũ, xem lại tên đặt tên cho đúng
+  public DishCtrl DishCtrl => dishCtrl;
+
+
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        this.LoadDishCtrl();
+    }
+
+    protected virtual void LoadDishCtrl()
+    {
+        if(this.dishCtrl!=null) return;
+        this.dishCtrl = transform.parent.GetComponent<DishCtrl>();
+        Debug.LogWarning(transform.name +" : Load DishCtrl" ,gameObject);
+    }
+
+
+
+/**   public Vector3 startPos;
+
+   public bool isPlaced = false;  //đúng vị trí thì thoy ko quay về chỗ cũ, xem lại tên đặt tên cho đúng
 
    protected override void OnEnable()
    {
@@ -25,8 +45,9 @@ public class DishMove : DishAbs
    public virtual void ReturnToStartPos()
    {
       
-      if (this.isCombinedArea) return; // true area impact hợp lí thì ko về vị trí ban đầu
+      if (this.isPlaced) return; // true area impact hợp lí thì ko về vị trí ban đầu
       this.transform.parent.position = this.startPos;
       
    }
+   **/
 }

@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c01688d7dbeadd4d9223fccf52f65a8, type: 3}
   m_Name: Rice
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 23abe81ce073db646a857a82652f6835, type: 3}
-  timeCook: 1
-  timeBurned: 2
+  timeCook: 5
+  timeBurned: 8
   money: 2
   FoodType: 1
   stateFood: 0

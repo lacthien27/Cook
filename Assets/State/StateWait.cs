@@ -21,7 +21,6 @@ public class StateWait : StateAbs
         {
             this.stateMachineCtrl.ChangeState(this.stateMachineCtrl.StatePayed);
             this.timer = 0; // reset timer after changing state
-        Debug.LogWarning("Change to StatePayed");
         }
         else if(timer>1000f)
         {

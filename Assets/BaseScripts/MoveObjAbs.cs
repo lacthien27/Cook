@@ -1,33 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Video;
 
-public class FoodMove : MoveObjAbs
+public class MoveObjAbs : ThienMonoBehaviour
 {
-
-[SerializeField] protected FoodCtrl foodCtrl;
-
-  public FoodCtrl FoodCtrl => foodCtrl;
-
-
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
-        this.LoadFoodCtrl();
-    }
-
-    protected virtual void LoadFoodCtrl()
-    {
-        if(this.foodCtrl!=null) return;
-        this.foodCtrl = transform.parent.GetComponent<FoodCtrl>();
-        Debug.LogWarning(transform.name +" : Load FoodCtrl" ,gameObject);
-    }
-   
-
-
-  /** public Vector3 startPos;
+   public Vector3 startPos;
 
    public bool isPlaced = false;  //đúng vị trí thì thoy ko quay về chỗ cũ, xem lại tên đặt tên cho đúng
 
@@ -50,7 +27,4 @@ public class FoodMove : MoveObjAbs
       if (this.isPlaced) return; // true area impact hợp lí thì ko về vị trí ban đầu
       this.transform.parent.position = this.startPos;
    }
-**/
-
- 
 }

@@ -18,8 +18,7 @@ public class NpcCheckOrders : NpcAbs
 
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.LogWarning(other.name);
-        Debug.LogWarning(other.transform.name);
+        
         if (other.transform.name == "OrderImpact")
         {
 
@@ -38,7 +37,7 @@ public class NpcCheckOrders : NpcAbs
         {
             var dish = other.transform.parent;
             listOrders.Remove(dish);
-            this.CheckOrder();  
+            this.CheckOrder(); 
         }
     } 
 
@@ -47,7 +46,8 @@ public class NpcCheckOrders : NpcAbs
     protected virtual void CheckOrder()
     {
         if (listOrders.Count != 0) return;
-        Debug.Log("Đã giao hết đơn hàng cho NPC");
-       isReceiveAllOrders = true;   
+       Debug.Log("Đã giao hết đơn hàng cho NPC");
+        isReceiveAllOrders = true;   
+       
     }
 }

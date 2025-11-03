@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class KittchenImpact : KittchenAbs
+public class KitchenImpact : KitchenAbs
 {
     [SerializeField] public float cookTimeAdd = 0f;
 
@@ -18,8 +18,14 @@ public class KittchenImpact : KittchenAbs
         {
             var obj = other.transform.parent;
             this.candidates.Add(obj);
-           
+            var objCtrl = obj.GetComponent<FoodCtrl>();
+            var ObjTimer = objCtrl.FoodTimer;
+            //ObjTimer.burnTime += burnTimeAdd;
+            //ObjTimer.cookTime += cookTimeAdd;
+            ObjTimer.StartCooking();
+
         }
+        
 
         }
         protected virtual void OnTriggerStay2D(Collider2D other)
@@ -29,18 +35,14 @@ public class KittchenImpact : KittchenAbs
         {
             var obj = other.transform.parent;
             var cookmove = other.transform.parent.GetComponentInChildren<FoodMove>();
-            cookmove.isCombinedArea = true;    //  nếu đặt ở enter sẽ bị lỗi 2 systemcombine ko enter cùng lúc -> object sẽ trả lại vị trí ban đầu
+            cookmove.isPlaced = true;    //  nếu đặt ở enter sẽ bị lỗi 2 systemcombine ko enter cùng lúc -> object sẽ trả lại vị trí ban đầu
 
             if (!GameCtrl.Instance.MouseCtrl.MousePos.isDrag && candidates.Contains(obj))
             {
-                this.kittchenCtrl.KittchenArrange.AddObject(obj);
+                this.kitchenCtrl.KitchenArrange.AddObject(obj); // add obj vào slot khi thả obj , phục vụ cho việc sắp xếp
                 this.candidates.Remove(obj);
-                this.kittchenCtrl.KittchenScreening.ScreeningFood(obj);  // screening khi thả obj
-                var objCtrl = obj.GetComponent<FoodCtrl>();
-                var ObjTimer = objCtrl.FoodTimer;
-                ObjTimer.burnTime += burnTimeAdd;
-                ObjTimer.cookTime += cookTimeAdd;
-                ObjTimer.StartCooking();
+                this.kitchenCtrl.KitchenScreening.ScreeningFood(obj);  // screening khi thả obj
+                
                 }
 
 
@@ -48,7 +50,7 @@ public class KittchenImpact : KittchenAbs
             if (GameCtrl.Instance.MouseCtrl.MousePos.isDrag && !candidates.Contains(obj))
             {
                 this.candidates.Add(obj);
-                this.kittchenCtrl.KittchenArrange.RemoveObject(obj);// rest slot khi đang kéo, thiếu sẽ bị lỗi obj còn lại di chuyển khi 1 obj khác di chuyển 
+                this.kitchenCtrl.KitchenArrange.RemoveObject(obj);// rest slot khi đang kéo, thiếu sẽ bị lỗi obj còn lại di chuyển khi 1 obj khác di chuyển
 
             }
                
@@ -61,8 +63,8 @@ public class KittchenImpact : KittchenAbs
         {
             var obj = other.transform.parent;
             var foodmove = other.transform.parent.GetComponentInChildren<FoodMove>();
-            foodmove.isCombinedArea = false;
-            this.kittchenCtrl.KittchenArrange.RemoveObject(obj);
+            foodmove.isPlaced = false;
+            this.kitchenCtrl.KitchenArrange.RemoveObject(obj);
             this.candidates.Remove(obj);
             var objCtrl = obj.GetComponent<FoodCtrl>();
             var ObjTimer = objCtrl.FoodTimer;

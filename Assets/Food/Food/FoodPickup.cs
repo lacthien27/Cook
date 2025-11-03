@@ -5,7 +5,6 @@ using UnityEngine;
 public class FoodPickup : FoodAbs, IsPickupAble
 {
     
-
     [SerializeField]     public  bool isAreaMouse { get; set; }   // is in zone impact off  mouse
 
     [SerializeField]    public bool isPickUp{ get; set; }  //  picked up  will do not allow to move object otherwise
@@ -22,13 +21,13 @@ public class FoodPickup : FoodAbs, IsPickupAble
         this.OnDrop();
 
     }
- 
-    public void OnDrag()
+
+    public  void OnDrag()
     {
         if (isPickUp == true) return;
                 if (isAreaMouse == true && GameCtrl.Instance.MouseCtrl.MousePos.isDrag)
                 {
-                    this.foodCtrl.FoodMove.Move();
+                 this.foodCtrl.FoodMove.Move();
                 }
     }
 

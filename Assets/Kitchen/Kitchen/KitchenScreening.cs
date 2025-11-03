@@ -4,7 +4,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.Video;
 
-public class KittchenScreening : KittchenAbs
+public class KitchenScreening : KitchenAbs
 {
 
 
