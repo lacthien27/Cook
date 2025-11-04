@@ -10,6 +10,9 @@ public class KitchenCtrl : ThienMonoBehaviour
     [SerializeField] protected KitchenScreening kitchenScreening;
     public KitchenScreening KitchenScreening => kitchenScreening;
 
+    [SerializeField] protected KitchenState kitchenState;
+
+    public KitchenState KitchenState => kitchenState;
 
 
     protected override void LoadComponents()
@@ -18,8 +21,15 @@ public class KitchenCtrl : ThienMonoBehaviour
 
         this.LoadKitchenArrange();
         this.LoadKitchenScreening();
+        this.LoadKitchenState();
     }
 
+    protected virtual void LoadKitchenState()
+    {
+        if (this.kitchenState != null) return;
+        this.kitchenState = GetComponentInChildren<KitchenState>();
+        Debug.LogWarning(transform.name + " : Load KitchenState", gameObject);
+    }
 
     protected virtual void LoadKitchenArrange()
     {

@@ -4,5 +4,9 @@ using UnityEngine;
 
 public class CharcoalTurnOff : CharcoalAbs
 {
-   
+ public virtual void TurnOff()
+
+    {
+        GameCtrl.Instance.SpawnerFuel.Despawn(transform.parent);
+    }  
 }

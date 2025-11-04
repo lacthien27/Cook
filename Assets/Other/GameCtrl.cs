@@ -43,7 +43,10 @@ public class GameCtrl : ThienMonoBehaviour
 
 
   [SerializeField] protected ArrangeNpc arrangeNpc;
-  public ArrangeNpc ArrangeNpc => arrangeNpc; 
+  public ArrangeNpc ArrangeNpc => arrangeNpc;
+
+  [SerializeField] protected SpawnerFuel spawnerFuel;
+  public SpawnerFuel SpawnerFuel => spawnerFuel;
 
 
 
@@ -68,9 +71,16 @@ public class GameCtrl : ThienMonoBehaviour
     this.LoadSpawnerDish();
     this.LoadSpawnerSpice();
     this.LoadArrangeNpc();
-    
+    this.LoadSpawnFuel();
 
 
+  }
+
+  protected virtual void LoadSpawnFuel()
+  {
+    if (spawnerFuel != null) return;
+    this.spawnerFuel = GameCtrl.FindObjectOfType<SpawnerFuel>();
+    Debug.Log(transform.name + "Load SpawnerFuel", gameObject);
   }
 
   protected virtual void LoadArrangeNpc()

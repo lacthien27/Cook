@@ -26,7 +26,7 @@ public class SpawnerFuel : Spawner
 
     protected virtual Transform SpawnNpc()
     {
-        var charcoal = this.Spawn(this.RandomPrefab(), new Vector3(3.5f, -4.5f, 0), Quaternion.identity); 
+        var charcoal = this.Spawn(this.RandomPrefab(), new Vector3(3.5f, -4f, 0), Quaternion.identity);
         charcoal.gameObject.SetActive(true);
         return charcoal;
     }

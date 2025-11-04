@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KitchenRefuelSta : KitchenAbs
+public class BarGrillImpact : KitchenImpact
 {
-   
-
-
+    
     
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -34,6 +35,19 @@ public class MouseImpact : MouseAbs
          }
       }
 
+      if (other.transform.parent.GetComponent<CharcoalCtrl>())
+      {
+         var charcoalCtrl = other.transform.parent.GetComponent<CharcoalCtrl>();
+         if (charcoalCtrl.CharcoalPickup.TryGetComponent(out IsPickupAble ObjPickup))
+         {
+            Debug.Log("Charcoal entered mouse area");
+            ObjPickup.isAreaMouse = true;
+            hasPicked = true; // gắn cờ
+         }
+      }
+
+
+
 
 
    }
@@ -55,6 +69,18 @@ public class MouseImpact : MouseAbs
       {
          var dishCtrl = other.transform.parent.GetComponent<DishCtrl>();
          if (dishCtrl.DishPickUp.TryGetComponent(out IsPickupAble ObjPickup))
+         {
+            ObjPickup.isAreaMouse = false;
+            hasPicked = false; // gắn cờ
+
+         }
+      }
+
+
+       if (other.transform.parent.GetComponent<CharcoalCtrl>())
+      {
+         var charcoalCtrl = other.transform.parent.GetComponent<CharcoalCtrl>();
+         if (charcoalCtrl.CharcoalPickup.TryGetComponent(out IsPickupAble ObjPickup))
          {
             ObjPickup.isAreaMouse = false;
             hasPicked = false; // gắn cờ

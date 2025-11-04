@@ -17,17 +17,9 @@ public class KitchenScreening : KitchenAbs
     {
         var objCtrl = obj.GetComponent<FoodCtrl>();
         var objPro = objCtrl.FoodPro;
-        foreach (var type in listTypeIngre)
-        {
-            if (objPro.FoodData.FoodType == type)
-            {
-                //       return obj;
-                return;
 
-            }
-        }
-
-        this.RemoveIngre(objCtrl.transform);
+        if (listTypeIngre.Contains(objPro.FoodData.FoodType)) return; // if the food type is in the allowed list, do nothing
+        this.RemoveIngre(objCtrl.transform); 
     }
 
     protected virtual void RemoveIngre(Transform obj)

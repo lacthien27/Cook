@@ -19,7 +19,7 @@ public class SpawnerIngredient : Spawner
     protected override void Start()
     {
         this.SpawnFoodCook();
-        InvokeRepeating(nameof(SpawnFoodCook), 1f,1f);
+        InvokeRepeating(nameof(SpawnFoodCook), 1f, 5f);
 
     }
 

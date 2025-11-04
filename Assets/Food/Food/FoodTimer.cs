@@ -7,7 +7,7 @@ public class FoodTimer : FoodAbs
      public float cookTime = 0f;     // thời gian để nấu chín
     public float burnTime = 0f;     // thời gian để cháy (sau khi chín)
 
-    private bool isOnBarGrill = false; 
+    public bool isOnBar = false; 
 
   [SerializeField]  private float timer=0f;
 
@@ -19,21 +19,22 @@ public class FoodTimer : FoodAbs
 
     }
 
-    protected virtual void Update()
+    protected virtual void FixedUpdate()
     {
 
-        if (isOnBarGrill && this.FoodCtrl.FoodState.currentState == StateOfFood.Cooking)
+        if (isOnBar && this.FoodCtrl.FoodState.currentState == StateOfFood.Cooking)
         {
+            Debug.LogWarning(timer);
             timer += Time.deltaTime;
             if (timer >= cookTime)
             {
                 this.FoodCtrl.FoodState.ChangeState(StateOfFood.Cooked);
                 Debug.LogWarning("cook finish" + transform.parent.name);
             }
-            
+
         }
 
-        if (isOnBarGrill && this.FoodCtrl.FoodState.currentState == StateOfFood.Cooked)
+        if (isOnBar && this.FoodCtrl.FoodState.currentState == StateOfFood.Cooked)
         {
             timer += Time.deltaTime;
 
@@ -44,7 +45,7 @@ public class FoodTimer : FoodAbs
 
             }
         }
-        
+
 
     }
 
@@ -53,18 +54,23 @@ public class FoodTimer : FoodAbs
     {
         if (this.FoodCtrl.FoodState.currentState == StateOfFood.Raw)
         {
-                this.FoodCtrl.FoodState.ChangeState(StateOfFood.Cooking);
-
-        isOnBarGrill = true;
+            this.FoodCtrl.FoodState.ChangeState(StateOfFood.Cooking);
+            isOnBar = true;
         }
-        
+
+    }
+
+    public void StartCookingAgain()
+    {
+        if (this.FoodCtrl.FoodState.currentState == StateOfFood.Burned) return;
+        isOnBar = true;
 
     }
 
     // gọi hàm này khi nhấc khỏi bếp
     public void StopCooking()
-    {                       isOnBarGrill = false;
-
+    {               
+        isOnBar = false;
 
     }
 }

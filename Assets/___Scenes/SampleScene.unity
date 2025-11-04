@@ -544,6 +544,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charcoalImpact: {fileID: 1573936138}
   charcoalTurnOff: {fileID: 1400672411}
+  charcoalMove: {fileID: 1387615708}
+  CharcoalPickup: {fileID: 1250744206}
 --- !u!1 &183080194
 GameObject:
   m_ObjectHideFlags: 0
@@ -1700,6 +1702,7 @@ MonoBehaviour:
   foodCtrl: {fileID: 1687303303}
   cookTime: 4
   burnTime: 6
+  isOnBar: 0
   timer: 0
 --- !u!1 &351043300
 GameObject:
@@ -2011,7 +2014,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kitchenCtrl: {fileID: 1349602796}
-  listTypeIngre: 0100000002000000
+  listTypeIngre: 02000000
 --- !u!4 &384859502
 Transform:
   m_ObjectHideFlags: 0
@@ -2779,6 +2782,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   kitchenArrange: {fileID: 1894629422}
   kitchenScreening: {fileID: 2058177075}
+  kitchenState: {fileID: 1825301774}
 --- !u!1 &515548814
 GameObject:
   m_ObjectHideFlags: 0
@@ -3970,6 +3974,7 @@ GameObject:
   - component: {fileID: 847424910}
   - component: {fileID: 847424914}
   - component: {fileID: 847424912}
+  - component: {fileID: 847424915}
   m_Layer: 0
   m_Name: MouseImpact
   m_TagString: Untagged
@@ -4032,6 +4037,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseCtrl: {fileID: 951228022}
   hasPicked: 0
+--- !u!50 &847424915
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847424909}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &847531309
 GameObject:
   m_ObjectHideFlags: 0
@@ -4673,6 +4699,7 @@ MonoBehaviour:
   foodCtrl: {fileID: 1050908587}
   cookTime: 1
   burnTime: 2
+  isOnBar: 0
   timer: 0
 --- !u!1 &970670513
 GameObject:
@@ -6656,6 +6683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716860308c551f648aca0ea1a137c390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  charcoalCtrl: {fileID: 162484480}
 --- !u!1 &1252581831
 GameObject:
   m_ObjectHideFlags: 0
@@ -7190,6 +7218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   kitchenArrange: {fileID: 1748475054}
   kitchenScreening: {fileID: 384859501}
+  kitchenState: {fileID: 0}
 --- !u!4 &1349602797
 Transform:
   m_ObjectHideFlags: 0
@@ -7387,6 +7416,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f17cf1eb46603f343ae0bdf2f568e78b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startPos: {x: 0, y: 0, z: 0}
+  isPlaced: 0
 --- !u!1 &1395664907
 GameObject:
   m_ObjectHideFlags: 0
@@ -8414,7 +8445,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -9740,6 +9771,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kitchenCtrl: {fileID: 510487108}
+  maxTime: 15
+  countdown: 0
+  charcoalAddTime: 2
+  maxCharcoal: 10
   currentState: 0
 --- !u!1 &1854739556
 GameObject:
