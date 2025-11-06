@@ -5,31 +5,31 @@ using UnityEngine.AI;
 
 public class KitchenImpact : KitchenAbs
 {
-    [SerializeField] public float cookTimeAdd = 0f;
+    //  [SerializeField] public float cookTimeAdd = 0f;
 
-        [SerializeField] public float burnTimeAdd = 0f;
+    //    [SerializeField] public float burnTimeAdd = 0f;
 
 
-        private HashSet<Transform> candidates = new HashSet<Transform>();// lưu trữ các object đang trong vùng impact
+    private HashSet<Transform> candidates = new HashSet<Transform>();// lưu trữ các object đang trong vùng impact
 
-        protected virtual void OnTriggerEnter2D(Collider2D other)
-        {
+    protected virtual void OnTriggerEnter2D(Collider2D other)
+    {
         if (other.transform.name == "Impact")
         {
             var obj = other.transform.parent;
             this.candidates.Add(obj);
         }
 
-        if(other.transform.name =="CharcoalImpact")
+        if (other.transform.name == "CharcoalImpact")
         {
-             var obj = other.transform.parent;
+            var obj = other.transform.parent;
             this.candidates.Add(obj);
-            
-            
-        }
-        
+
 
         }
+
+
+    }
     protected virtual void OnTriggerStay2D(Collider2D other)
     {
 
@@ -64,15 +64,17 @@ public class KitchenImpact : KitchenAbs
 
             if (!GameCtrl.Instance.MouseCtrl.MousePos.isDrag && candidates.Contains(CharcoalCtrl))
             {
-                this.kitchenCtrl.KitchenState.AddCharcoal();
+                //  CharcoalMove.isPlaced = true; 
+                this.kitchenCtrl.KitchenRefuelSta.AddCharcoal(CharcoalCtrl.GetComponentInChildren<CharcoalTimeBurn>().burnTimeAdd);
+                //  this.kitchenCtrl.KitchenRefuelSta.AddCharcoal();
                 this.candidates.Remove(CharcoalCtrl);
                 var CharcoalTurnOff = CharcoalCtrl.GetComponentInChildren<CharcoalTurnOff>();
                 CharcoalTurnOff.TurnOff();
             }
         }
     }
-        protected virtual void OnTriggerExit2D(Collider2D other)
-        {
+    protected virtual void OnTriggerExit2D(Collider2D other)
+    {
         if (other.transform.name == "Impact")
         {
             var obj = other.transform.parent;
@@ -86,15 +88,25 @@ public class KitchenImpact : KitchenAbs
             var ObjTimer = obj.GetComponent<FoodCtrl>().FoodTimer;
             ObjTimer.StopCooking();
 
-            
+
 
         }
+
+        if (other.transform.name == "CharcoalImpact")
+        {
+            var CharcoalCtrl = other.transform.parent;
+            var CharcoalMove = other.transform.parent.GetComponentInChildren<CharcoalMove>();
+
+            CharcoalMove.isPlaced = false;
+            this.candidates.Remove(CharcoalCtrl);
+
         }
 
 
 
-     
-   
 
 
+
+
+    }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class KitchenState : KitchenAbs
 {
-    [Header("🔥 Timer Settings")]
+   /** [Header("🔥 Timer Settings")]
     [SerializeField] private float maxTime = 100f;   // thời gian cháy tối đa khi đầy
     [SerializeField] private float countdown;       // thời gian còn lại
 
@@ -47,8 +47,9 @@ public class KitchenState : KitchenAbs
         if (countdown > maxTime)
             countdown = maxTime;
 
-    }
+    }**/
 
+    public StateOfKitchen currentState = StateOfKitchen.Cold;   // mặc định ban đầu là sống
 
 
     public void ChangeState(StateOfKitchen newState)
@@ -84,19 +85,19 @@ public class KitchenState : KitchenAbs
 
     private void OnLow()
     {
-      Debug.Log($"{name} bắt đầu COOKING");
+    //  Debug.Log($"{name} bắt đầu COOKING");
         // ví dụ: bật animation, hiệu ứng lửa
     }
 
     private void OnIdeal()
     {
-        Debug.Log($"{name} đã COOKED");
+  //      Debug.Log($"{name} đã COOKED");
         // ví dụ: đổi màu, cho phép ăn/serve
     }
 
     private void OnHigh()
     {
-        Debug.Log($"{name} bị BURNED");
+//        Debug.Log($"{name} bị BURNED");
        // // ví dụ: đổi sang màu đen, mất điểm
     }
 }

@@ -39,9 +39,7 @@ public class MouseImpact : MouseAbs
       {
          var charcoalCtrl = other.transform.parent.GetComponent<CharcoalCtrl>();
          if (charcoalCtrl.CharcoalPickup.TryGetComponent(out IsPickupAble ObjPickup))
-         {
-            Debug.Log("Charcoal entered mouse area");
-            ObjPickup.isAreaMouse = true;
+         {            ObjPickup.isAreaMouse = true;
             hasPicked = true; // gắn cờ
          }
       }

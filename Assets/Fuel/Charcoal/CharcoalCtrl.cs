@@ -20,7 +20,8 @@ public class CharcoalCtrl : ThienMonoBehaviour
     [SerializeField] public CharcoalPickup CharcoalPickup;
     public CharcoalPickup CharcoalPickUp => CharcoalPickup;
 
-
+    [SerializeField] protected CharcoalTimeBurn charcoalTimeBurn;
+    public CharcoalTimeBurn CharcoalTimeBurn => charcoalTimeBurn;
 
     protected override void LoadComponents()
     {
@@ -29,6 +30,14 @@ public class CharcoalCtrl : ThienMonoBehaviour
         this.LoadCharcoalTurnOff();
         this.LoadCharcoalMove();
         this.LoadCharcoalPickup();
+        this.LoadCharcoalTimeBurn();
+    }
+
+    protected virtual void LoadCharcoalTimeBurn()
+    {
+        if (this.charcoalTimeBurn != null) return;
+        this.charcoalTimeBurn = GetComponentInChildren<CharcoalTimeBurn>();
+        Debug.LogWarning(transform.name + " : Load CharcoalTimeBurn", gameObject);
     }
     
     protected virtual void LoadCharcoalPickup()
