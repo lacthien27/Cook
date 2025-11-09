@@ -24,7 +24,7 @@ public class FoodTimer : FoodAbs
 
         if (isOnBar && this.FoodCtrl.FoodState.currentState == StateOfFood.Cooking)
         {
-            Debug.LogWarning(timer);
+//            Debug.LogWarning(timer);
             timer += Time.deltaTime;
             if (timer >= cookTime)
             {

@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
-public class KitchenArrange : KitchenAbs
+public class KitchenArrange : ThienMonoBehaviour
 {
     public List<Transform> slots = new List<Transform>(); // 4 slot transform đặt thủ công trong editor
     private Dictionary<Transform, Transform> assignedSlots = new Dictionary<Transform, Transform>();
 
     // Thêm object
-    
+   
 
     public void AddObject(Transform obj)
     {
@@ -16,6 +18,7 @@ public class KitchenArrange : KitchenAbs
 
         if (nearestSlot != null)
         {
+            Debug.LogWarning("AddObject: " + obj.name + " to " + nearestSlot.name);
             assignedSlots[obj] = nearestSlot;
             obj.position = nearestSlot.position;
         }
@@ -49,7 +52,7 @@ public class KitchenArrange : KitchenAbs
                 }
             }
         }
-
+        Debug.LogWarning(nearest);
         return nearest;
     }
     

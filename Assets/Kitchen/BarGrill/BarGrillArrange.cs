@@ -1,18 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class BarGrillArrange : MonoBehaviour
+public class BarGrillArrange : KitchenArrange
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    /**
+   [SerializeField] protected Transform Image;
 
-    // Update is called once per frame
-    void Update()
+    protected override void LoadComponents()
     {
-        
+        base.LoadComponents();
+        this.LoadImage();
     }
+    
+
+    protected virtual void LoadImage()
+    {
+        if (this.Image != null) return;
+        this.Image = transform.Find("Image");
+        Debug.LogWarning(transform.name + " : Load Image", gameObject);
+    }**/
 }
