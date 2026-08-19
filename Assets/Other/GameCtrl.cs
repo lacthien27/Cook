@@ -49,6 +49,9 @@ public class GameCtrl : ThienMonoBehaviour
   public SpawnerFuel SpawnerFuel => spawnerFuel;
 
 
+  [SerializeField] protected SpawnerTableWare spawnerTableWare;
+  public SpawnerTableWare SpawnerTableWare => spawnerTableWare;
+
 
   protected override void Awake()
   {
@@ -72,9 +75,17 @@ public class GameCtrl : ThienMonoBehaviour
     this.LoadSpawnerSpice();
     this.LoadArrangeNpc();
     this.LoadSpawnFuel();
-
+    this.LoadSpawnTableWare();
 
   }
+
+  protected virtual void LoadSpawnTableWare()
+  {
+    if (spawnerTableWare != null) return;
+    this.spawnerTableWare = GameCtrl.FindObjectOfType<SpawnerTableWare>();
+    Debug.Log(transform.name + "Load SpawnerTableWare", gameObject);
+  }
+
 
   protected virtual void LoadSpawnFuel()
   {

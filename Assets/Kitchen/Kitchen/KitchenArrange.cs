@@ -6,11 +6,38 @@ using Debug = UnityEngine.Debug;
 
 public class KitchenArrange : ThienMonoBehaviour
 {
-    public List<Transform> slots = new List<Transform>(); // 4 slot transform đặt thủ công trong editor
+
+    [SerializeField] protected Transform Image;
+
+    public List<Transform> slots = new List<Transform>();
     private Dictionary<Transform, Transform> assignedSlots = new Dictionary<Transform, Transform>();
 
-    // Thêm object
-   
+     protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        this.LoadImage();
+        this.AddObjToList();
+    }
+
+     protected virtual void LoadImage()
+    {
+        if (this.Image != null) return;
+        this.Image = transform.parent.Find("Image");
+        Debug.LogWarning(transform.name + " : Load Image", gameObject);
+    }
+    
+    protected virtual void AddObjToList()
+    {
+        if(slots.Count > 0) return;
+        for (int i = 0; i < Image.childCount; i++)
+        {
+            Transform slot = Image.GetChild(i);
+            slots.Add(slot);
+        }
+    }
+
+
+
 
     public void AddObject(Transform obj)
     {
@@ -52,7 +79,7 @@ public class KitchenArrange : ThienMonoBehaviour
                 }
             }
         }
-        Debug.LogWarning(nearest);
+        //Debug.LogWarning(nearest);
         return nearest;
     }
     

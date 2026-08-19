@@ -18,8 +18,8 @@ public class SpawnerIngredient : Spawner
 
     protected override void Start()
     {
-        this.SpawnFoodCook();
-        InvokeRepeating(nameof(SpawnFoodCook), 1f, 5f);
+       // this.SpawnFoodCook();
+        //InvokeRepeating(nameof(SpawnFoodCook), 1f, 5f);
 
     }
 
@@ -80,4 +80,12 @@ public class SpawnerIngredient : Spawner
         }
 
     }**/
+
+
+    public virtual  void SpawnRice()
+    {
+        Transform ricePrefab = prefabs[0];
+        var rice = this.Spawn(ricePrefab,GameCtrl.Instance.MouseCtrl.transform.position, Quaternion.identity);
+        rice.gameObject.SetActive(true);
+    }
 }

@@ -44,7 +44,7 @@ public class MouseImpact : MouseAbs
          }
       }
 
-
+     
 
 
 
@@ -87,13 +87,10 @@ public class MouseImpact : MouseAbs
       }
 
 
-
-   }
-
-
-  
+      
 
 }
 
+}
 
 

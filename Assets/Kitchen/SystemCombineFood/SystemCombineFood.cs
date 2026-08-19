@@ -30,9 +30,6 @@ public class SystemCombineFood : SystemCombineFoodAbs
 
   }
 
-
-
-
   void CheckRecipe()
   {
     foreach (var recipe in recipes)
